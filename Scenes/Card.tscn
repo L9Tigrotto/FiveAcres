@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://k1x11amoy215"]
+[gd_scene load_steps=9 format=3 uid="uid://k1x11amoy215"]
 
 [ext_resource type="Texture2D" uid="uid://c4u75visp4wxe" path="res://Resources/card_bg.png" id="1_3p273"]
 [ext_resource type="Script" uid="uid://dgqd2n7nuuny3" path="res://Scripts/Card.cs" id="1_kphy1"]
@@ -16,38 +16,50 @@ font = ExtResource("2_h8wm0")
 font_size = 20
 font_color = Color(0.448314, 0.501923, 0.600937, 1)
 
-[node name="Card" type="Node2D"]
-scale = Vector2(20, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kphy1"]
+size = Vector2(29.5, 46)
+
+[node name="Card" type="Area2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_kphy1")
 Data = ExtResource("2_wejov")
 
 [node name="Card_Bg" type="Sprite2D" parent="."]
 position = Vector2(0, -20)
+scale = Vector2(1, 1)
 texture = ExtResource("1_3p273")
 
 [node name="Card_Art" type="Sprite2D" parent="Card_Bg"]
 position = Vector2(0, -11.85)
-scale = Vector2(1, 1)
 texture = ExtResource("2_3m7nw")
 
-[node name="Card_Name" type="Label" parent="."]
+[node name="Card_Name" type="Label" parent="Card_Bg"]
 texture_filter = 1
 offset_left = -14.0
-offset_top = -22.0
+offset_top = -2.0
 offset_right = 144.0
-offset_bottom = -4.0
+offset_bottom = 16.0
 scale = Vector2(0.176827, 0.175654)
 text = "Card Name"
 label_settings = SubResource("LabelSettings_3m7nw")
 horizontal_alignment = 1
 
-[node name="Card_Desc" type="Label" parent="."]
+[node name="Card_Desc" type="Label" parent="Card_Bg"]
 texture_filter = 1
 offset_left = -14.0
-offset_top = -17.0
+offset_top = 3.0
 offset_right = 139.0
-offset_bottom = 87.0
+offset_bottom = 107.0
 scale = Vector2(0.184661, 0.185509)
 text = "+1 energy
 -2 water"
 label_settings = SubResource("LabelSettings_kphy1")
+
+[node name="CardPivot" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20.1)
+rotation = -0.00299437
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_kphy1")
