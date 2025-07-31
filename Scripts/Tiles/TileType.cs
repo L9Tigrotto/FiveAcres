@@ -1,6 +1,7 @@
 
 
 using Godot;
+using System;
 using System.Diagnostics;
 
 public enum TileType
@@ -11,8 +12,6 @@ public enum TileType
 	Soil = 1,		// soil can accomodate plants and trees
 	Stone = 2,		// stone can be removed with a pickaxe card
 	//Water,
-
-	Weed = 10,      // weed spreads to adjacent soil tiles and can "eat" plants and trees
 
 	// early stage plants
 	EarlyStageWheat = 20,
@@ -49,56 +48,58 @@ public enum TileType
 	LateStageCherryTree = 71,
 	LateStagePeachTree = 72,
 	LateStagePearTree = 73,
+
+	Weed = 80,      // weed spreads to adjacent soil tiles and can "eat" plants and trees
 }
 
 public static class TileTypeExtensions
 {
-	public static Vector2I ToAtlasCoord(this TileType type)
+	public static Vector2I ToAtlasCoord(this TileType type, Random random)
 	{
 		return type switch
 		{
 			TileType.Grass => new(1, 0),
 			TileType.Soil => new(2, 0),
-			TileType.Stone => new(0, 1),
+			TileType.Stone => new(0, 0),
 			//TileType.Water => new(2, 3),
 
-			TileType.Weed => new(2, 3),
+			TileType.Weed => new(random.Next(0, 2 + 1), 2),
 
 			// early stage seeds
-			TileType.EarlyStageWheat => new(2, 3),
-			TileType.EarlyStageRice => new(2, 3),
-			TileType.EarlyStageCarrot => new(2, 3),
-			TileType.EarlyStagePotato => new(2, 3),
+			TileType.EarlyStageWheat => new(0, 1),
+			TileType.EarlyStageRice => new(0, 0),
+			TileType.EarlyStageCarrot => new(0, 0),
+			TileType.EarlyStagePotato => new(0, 0),
 
 			// mid stage seeds
-			TileType.MidStageWheat => new(2, 3),
-			TileType.MidStageRice => new(2, 3),
-			TileType.MidStageCarrot => new(2, 3),
-			TileType.MidStagePotato => new(2, 3),
+			TileType.MidStageWheat => new(1, 1),
+			TileType.MidStageRice => new(0, 0),
+			TileType.MidStageCarrot => new(0, 0),
+			TileType.MidStagePotato => new(0, 0),
 
 			// late stage seeds
-			TileType.LateStageWheat => new(2, 3),
-			TileType.LateStageRice => new(2, 3),
-			TileType.LateStageCarrot => new(2, 3),
-			TileType.LateStagePotato => new(2, 3),
+			TileType.LateStageWheat => new(2, 1),
+			TileType.LateStageRice => new(0, 0),
+			TileType.LateStageCarrot => new(0, 0),
+			TileType.LateStagePotato => new(0, 0),
 
 			// early stage trees
-			TileType.EarlyStageAppleTree => new(2, 3),
-			TileType.EarlyStageCherryTree => new(2, 3),
-			TileType.EarlyStagePeachTree => new(2, 3),
-			TileType.EarlyStagePearTree => new(2, 3),
+			TileType.EarlyStageAppleTree => new(0, 0),
+			TileType.EarlyStageCherryTree => new(0, 0),
+			TileType.EarlyStagePeachTree => new(0, 0),
+			TileType.EarlyStagePearTree => new(0, 0),
 
 			// mid stage trees
-			TileType.MidStageAppleTree => new(2, 3),
-			TileType.MidStageCherryTree => new(2, 3),
-			TileType.MidStagePeachTree => new(2, 3),
-			TileType.MidStagePearTree => new(2, 3),
+			TileType.MidStageAppleTree => new(0, 0),
+			TileType.MidStageCherryTree => new(0, 0),
+			TileType.MidStagePeachTree => new(0, 0),
+			TileType.MidStagePearTree => new(0, 0),
 
 			// late stage trees
-			TileType.LateStageAppleTree => new(2, 3),
-			TileType.LateStageCherryTree => new(2, 3),
-			TileType.LateStagePeachTree => new(2, 3),
-			TileType.LateStagePearTree => new(2, 3),
+			TileType.LateStageAppleTree => new(0, 0),
+			TileType.LateStageCherryTree => new(0, 0),
+			TileType.LateStagePeachTree => new(0, 0),
+			TileType.LateStagePearTree => new(0, 0),
 			_ => throw new UnreachableException()
 		};
 	}

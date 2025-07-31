@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chbagor2q72fh"
-path="res://.godot/imported/exercise.png-c2a6ae1b2c81771f2a831a2176a21059.ctex"
+uid="uid://bvaw3g8jb2xim"
+path="res://.godot/imported/terrain.png-ebad092fa83cc844e4c4e29d6b56d92f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/exercise.png"
-dest_files=["res://.godot/imported/exercise.png-c2a6ae1b2c81771f2a831a2176a21059.ctex"]
+source_file="res://Resources/terrain.png"
+dest_files=["res://.godot/imported/terrain.png-ebad092fa83cc844e4c4e29d6b56d92f.ctex"]
 
 [params]
 

@@ -12,10 +12,17 @@ public partial class World : Node
 	public override void _Ready()
 	{
 		TileMapLayer tileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
-		Generations = [new(id: 0, Size, tileMapLayer)];
+		Generations = [new(Size, tileMapLayer, 3 * 60)];
 	}
 
-	public void Advance()
+	private double elapsed { get; set; }
+	public override void _Process(double delta)
+	{
+		if (elapsed >= 1.0) { CurrentGeneration.SimulateSecond(); elapsed = 0.0; }
+		else { elapsed += delta; }
+	}
+
+	public void AdvanceGeneration()
 	{
 		Generation nextGeneration = CurrentGeneration.Advance();
 		Generations.Add(nextGeneration);
@@ -25,6 +32,6 @@ public partial class World : Node
 	{
 		TileMapLayer tileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
 		Generations.Clear();
-		Generations.Add(new(id: 0, Size, tileMapLayer));
+		Generations.Add(new(Size, tileMapLayer, 3 * 60));
 	}
 }
