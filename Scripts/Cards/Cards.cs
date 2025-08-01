@@ -147,7 +147,7 @@ file class Cost2GeneratorCard(string imagePath, string name, string description,
 	imagePath,
 	name, description,
 	storeCost: [((ItemType)Random.Shared.Next(1, 8 + 1), amount1), ((ItemType)Random.Shared.Next(1, 8 + 1), amount2)],
-	radius, playCost,
+	playCost, radius,
 	replaceWith, replacePredicate);
 
 // weed
