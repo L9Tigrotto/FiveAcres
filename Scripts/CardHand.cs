@@ -29,6 +29,7 @@ public partial class CardHand : Node2D
 	{
 		Card newCard = CardScene.Instantiate<Card>();
 		newCard.Position = Vector2.Down * CardSize;
+		newCard._Ready();
 		newCard.SetCard(card);
 
 		//Add card to cards in hand

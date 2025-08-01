@@ -426,7 +426,7 @@ text = "↳ -1 seconds"
 label_settings = SubResource("LabelSettings_p70al")
 
 [node name="Card_Hand" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(16, 268)
+position = Vector2(24, 267)
 CardSize = 48
 CardCurvatureMaxHeight = 5
 

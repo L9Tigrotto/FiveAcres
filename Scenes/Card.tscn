@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_h8wm0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m7nw"]
+line_spacing = 0.0
 font = ExtResource("2_h8wm0")
 font_size = 32
 font_color = Color(0.619664, 0.746456, 0.502776, 1)
@@ -13,9 +14,11 @@ outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kphy1"]
+line_spacing = -2.0
 font = ExtResource("2_h8wm0")
 font_size = 20
-font_color = Color(0.448314, 0.501923, 0.600937, 1)
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wejov"]
 font = ExtResource("2_h8wm0")
@@ -25,6 +28,7 @@ font_size = 18
 size = Vector2(42.2438, 57.7527)
 
 [node name="Card" type="Area2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_kphy1")
 
 [node name="Card_Bg" type="Sprite2D" parent="."]
@@ -32,7 +36,7 @@ position = Vector2(0, -27)
 texture = ExtResource("1_3p273")
 
 [node name="Card_Art" type="Sprite2D" parent="Card_Bg"]
-position = Vector2(0, -11.85)
+position = Vector2(0, -14)
 texture = ExtResource("2_3m7nw")
 
 [node name="Card_Name" type="Label" parent="Card_Bg"]
@@ -49,13 +53,15 @@ horizontal_alignment = 1
 [node name="Card_Desc" type="Label" parent="Card_Bg"]
 texture_filter = 1
 offset_left = -20.0
-offset_top = 5.0
-offset_right = 199.0
-offset_bottom = 133.0
+offset_top = 7.0
+offset_right = 197.0
+offset_bottom = 110.0
 scale = Vector2(0.184, 0.185)
 text = "+1 energy
 -2 water"
 label_settings = SubResource("LabelSettings_kphy1")
+autowrap_mode = 2
+clip_text = true
 
 [node name="Card_Cost" type="Label" parent="Card_Bg"]
 offset_left = -23.25

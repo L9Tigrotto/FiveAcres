@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3pd0irkf4na6" path="res://Scripts/Storage.cs" id="1_tvprw"]
 [ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="2_ffo6q"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="3_clmel"]
-[ext_resource type="Texture2D" uid="uid://cc50o6wvf8lci" path="res://Resources/card_arts/carot.png" id="4_ffo6q"]
+[ext_resource type="Texture2D" uid="uid://cc50o6wvf8lci" path="res://Resources/card_arts/carrot.png" id="4_ffo6q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i5cya"]
 font = ExtResource("3_clmel")

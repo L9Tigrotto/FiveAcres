@@ -21,9 +21,9 @@ public partial class Card : Area2D
 	public override void _Ready()
 	{
 		CardBg = GetNode<Sprite2D>("Card_Bg");
-		CardArt = CardBg.GetNode<Sprite2D>("Card_Art");
-		CardName = CardBg.GetNode<Label>("Card_Name");
-		CardDescription = CardBg.GetNode<Label>("Card_Desc");
+		CardArt = GetNode<Sprite2D>("Card_Bg/Card_Art");
+		CardName = GetNode<Label>("Card_Bg/Card_Name");
+		CardDescription = GetNode<Label>("Card_Bg/Card_Desc");
 		
 		_originalPosition = CardBg.Position;
 		_originalScale = CardBg.Scale;
