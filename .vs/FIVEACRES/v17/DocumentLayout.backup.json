@@ -7,28 +7,8 @@
       "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\tiles\\itile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\tiles\\itile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\data\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\data\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\tiles\\tilegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\tiles\\tilegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\tiles\\tiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\tiles\\tiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\tiles\\tiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\tiles\\tiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Generation.cs",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Generation.cs",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
+              "RelativeToolTip": "Scripts\\Generation.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAG4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T09:18:48.307Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -66,89 +59,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CardData.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Data\\CardData.cs",
-              "RelativeDocumentMoniker": "Scripts\\Data\\CardData.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Data\\CardData.cs",
-              "RelativeToolTip": "Scripts\\Data\\CardData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T22:16:02.311Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ITile.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\ITile.cs",
-              "RelativeDocumentMoniker": "Scripts\\Tiles\\ITile.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\ITile.cs",
-              "RelativeToolTip": "Scripts\\Tiles\\ITile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T20:26:59.086Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Tiles.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\Tiles.cs",
-              "RelativeDocumentMoniker": "Scripts\\Tiles\\Tiles.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\Tiles.cs",
-              "RelativeToolTip": "Scripts\\Tiles\\Tiles.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAA3wNgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T20:27:46.337Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Generation.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Generation.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
-              "RelativeToolTip": "Scripts\\Generation.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T19:42:50.564Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "World.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeDocumentMoniker": "Scripts\\World.cs",
               "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeToolTip": "Scripts\\World.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T19:36:09.516Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TileGrid.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\TileGrid.cs",
-              "RelativeDocumentMoniker": "Scripts\\Tiles\\TileGrid.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\TileGrid.cs",
-              "RelativeToolTip": "Scripts\\Tiles\\TileGrid.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAywCMAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T12:19:02.489Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TileType.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\TileType.cs",
-              "RelativeDocumentMoniker": "Scripts\\Tiles\\TileType.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\TileType.cs",
-              "RelativeToolTip": "Scripts\\Tiles\\TileType.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAAAEEAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T20:27:49.539Z"
             }
           ]
         }

@@ -16,16 +16,17 @@ public partial class World : Node
 	{
 		TileMapLayer tileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
 		tileMapLayer.Transform = new Transform2D(0, new(
-			GetViewport().GetVisibleRect().Size.X / 2 - Size.X * tileMapLayer.TileSet.TileSize.X / 2,
+			GetViewport().GetVisibleRect().Size.X / 3,
 			GetViewport().GetVisibleRect().Size.Y / 2 - Size.Y * tileMapLayer.TileSet.TileSize.Y / 2));
 		GD.Print($"TileMapLayer Transform: {tileMapLayer.Transform}");
 		
-		Generations = [new(Size, tileMapLayer, 3 * 60)];
+		Generations = [new(Size, tileMapLayer, 60)];
 
 		GenerationLabel = GetNode<Label>("GenerationLabel");
-		GenerationLabel.Text = $"Generation: {CurrentGeneration.ID}";
+		UpdateGenerationLabel();
+
 		TimeLeftLabel = GetNode<Label>("TimeLeftLabel");
-		TimeLeftLabel.Text = $"Time Left: {CurrentGeneration.LengthInSeconds} seconds";
+		UpdateTimeLeftLabel();
 	}
 
 	private double Elapsed { get; set; } = 0;
@@ -38,7 +39,7 @@ public partial class World : Node
 			Generations.Add(nextGeneration);
 			IsGenerationEnded = false;
 
-			GenerationLabel.Text = $"Generation: {nextGeneration.ID}";
+			UpdateGenerationLabel();
 			return;
 		}
 
@@ -47,15 +48,18 @@ public partial class World : Node
 			IsGenerationEnded = CurrentGeneration.SimulateSecond();
 			Elapsed = 0.0;
 
-			TimeLeftLabel.Text = $"Time Left: {CurrentGeneration.LengthInSeconds - CurrentGeneration.ElapsedSeconds} seconds";
+			UpdateTimeLeftLabel();
 		}
 		else { Elapsed += delta; }
 	}
 
-	public void Reset()
+	private void UpdateGenerationLabel()
 	{
-		TileMapLayer tileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
-		Generations.Clear();
-		Generations.Add(new(Size, tileMapLayer, 3 * 60));
+		GenerationLabel.Text = $"Generation: {CurrentGeneration.ID}";
+	}
+
+	private void UpdateTimeLeftLabel()
+	{
+		TimeLeftLabel.Text = $"↳ {CurrentGeneration.LengthInSeconds - CurrentGeneration.ElapsedSeconds} seconds";
 	}
 }

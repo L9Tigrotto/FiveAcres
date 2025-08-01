@@ -21,19 +21,6 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Generation.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Generation.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
-              "RelativeToolTip": "Scripts\\Generation.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAG4AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T09:18:48.307Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
@@ -59,13 +46,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Generation.cs",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Generation.cs",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
+              "RelativeToolTip": "Scripts\\Generation.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAG4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T09:18:48.307Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "World.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeDocumentMoniker": "Scripts\\World.cs",
               "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeToolTip": "Scripts\\World.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBMAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T19:36:09.516Z",
               "EditorCaption": ""
