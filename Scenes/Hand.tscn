@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1rd1hwsrvhaf"]
+[gd_scene load_steps=4 format=3 uid="uid://dobhntanvkroo"]
 
 [ext_resource type="Script" uid="uid://cg3d1yuk7gkye" path="res://Scripts/CardHand.cs" id="1_0xaq6"]
 [ext_resource type="PackedScene" uid="uid://k1x11amoy215" path="res://Scenes/Card.tscn" id="2_q1mbt"]
