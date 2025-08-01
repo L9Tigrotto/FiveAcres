@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bqj7yu1mjappr"]
 
 [ext_resource type="Script" uid="uid://cp4wpbl4k5iw1" path="res://Scripts/World.cs" id="1_j0p05"]
-[ext_resource type="Texture2D" uid="uid://bvaw3g8jb2xim" path="res://Resources/terrain.png" id="2_45d1s"]
+[ext_resource type="Texture2D" uid="uid://cc3pmpn7a3ybn" path="res://Resources/terrain.png" id="2_45d1s"]
 [ext_resource type="Texture2D" uid="uid://cuaygubiku7w4" path="res://Resources/background.png" id="2_q2d71"]
 [ext_resource type="Texture2D" uid="uid://ccdexkx50rgdj" path="res://Resources/grass.png" id="3_p70al"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="6_45d1s"]
@@ -19,6 +19,25 @@ texture = ExtResource("2_45d1s")
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+0:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_45d1s"]
 texture = ExtResource("3_p70al")
