@@ -3,7 +3,7 @@ using System;
 
 public partial class Card : Area2D
 {
-	[Export] public CardBaseData Data { get; set; }
+	//[Export] public CardBaseData Data { get; set; }
 	
 	Sprite2D CardBg { get; set; }
 	Sprite2D CardArt { get; set; }
@@ -20,8 +20,6 @@ public partial class Card : Area2D
 	
 	public override void _Ready()
 	{
-		if(Data is null) throw new NullReferenceException($"No card data was assigned to card.");
-		
 		CardBg = GetNode<Sprite2D>("Card_Bg");
 		CardArt = CardBg.GetNode<Sprite2D>("Card_Art");
 		CardName = CardBg.GetNode<Label>("Card_Name");
@@ -30,9 +28,9 @@ public partial class Card : Area2D
 		_originalPosition = CardBg.Position;
 		_originalScale = CardBg.Scale;
 		
-		CardArt.Texture = Data.Art;
-		CardName.Text = Data.Name;
-		CardDescription.Text = Data.Description;
+		//CardArt.Texture = Data.Art;
+		//CardName.Text = Data.Name;
+		//CardDescription.Text = Data.Description;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
