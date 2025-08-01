@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dejea47savkr3"]
+
+[ext_resource type="Script" uid="uid://bebymdor2nq4x" path="res://Scripts/Shop.cs" id="1_kjfcx"]
+[ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_iidq5"]
+[ext_resource type="Script" uid="uid://b0rq5dx4vxnrs" path="res://Scripts/OpenShopButton.cs" id="3_lagin"]
+[ext_resource type="Script" uid="uid://tlsfb5mx7vm8" path="res://Scripts/CloseShopButton.cs" id="4_i4qx4"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kjfcx")
+
+[node name="OpenShopButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 128.0
+offset_right = 60.0
+offset_bottom = 147.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_iidq5")
+theme_override_font_sizes/font_size = 12
+text = "Shop"
+script = ExtResource("3_lagin")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -8.0
+offset_right = 480.0
+offset_bottom = 264.0
+color = Color(1, 1, 1, 0.25098)
+
+[node name="CloseShopButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_right = 479.0
+offset_bottom = 19.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_iidq5")
+theme_override_font_sizes/font_size = 12
+text = "X"
+script = ExtResource("4_i4qx4")

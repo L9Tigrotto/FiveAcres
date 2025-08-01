@@ -6,12 +6,12 @@ using System.Diagnostics;
 
 public enum TileType
 {
-	Empty = -1,		// used to indicate an empty tile
+	Empty = -1,     // used to indicate an empty tile
 
 	Grass = 0,      // hoe card can transform soil grass in soil
-	Soil = 1,		// soil can accomodate plants and trees
-	Stone = 2,		// stone can be removed with a pickaxe card
-	//Water,
+	Soil = 1,       // soil can accomodate plants and trees
+	Stone = 2,      // stone can be removed with a pickaxe card
+					//Water,
 
 	// early stage plants
 	EarlyStageWheat = 20,
@@ -24,7 +24,7 @@ public enum TileType
 	MidStageRice = 31,
 	MidStageCarrot = 32,
 	MidStagePotato = 33,
-	
+
 	// late stage plants
 	LateStageWheat = 40,
 	LateStageRice = 41,
@@ -101,6 +101,40 @@ public static class TileTypeExtensions
 			TileType.LateStagePeachTree => new(0, 0),
 			TileType.LateStagePearTree => new(0, 0),
 			_ => throw new UnreachableException()
+		};
+	}
+
+	public static bool CanBeHarvested(this TileType type)
+	{
+		return type switch
+		{
+			TileType.LateStageWheat => true,
+			TileType.LateStageRice => true,
+			TileType.LateStageCarrot => true,
+			TileType.LateStagePotato => true,
+			TileType.LateStageAppleTree => true,
+			TileType.LateStageCherryTree => true,
+			TileType.LateStagePeachTree => true,
+			TileType.LateStagePearTree => true,
+
+			_ => false
+		};
+	}
+
+	public static ItemType HarvestType(this TileType type)
+	{
+		return type switch
+		{
+			TileType.LateStageWheat => ItemType.Wheat,
+			TileType.LateStageRice => ItemType.Rice,
+			TileType.LateStageCarrot => ItemType.Carrot,
+			TileType.LateStagePotato => ItemType.Potato,
+			TileType.LateStageAppleTree => ItemType.Apple,
+			TileType.LateStageCherryTree => ItemType.Cherry,
+			TileType.LateStagePeachTree => ItemType.Peach,
+			TileType.LateStagePearTree => ItemType.Pear,
+
+			_ => throw new ArgumentException($"TileType {type} cannot be harvested.")
 		};
 	}
 }

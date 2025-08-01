@@ -3,7 +3,7 @@ using System;
 
 public partial class Card : Area2D
 {
-	[Export] public CardData Data { get; set; }
+	[Export] public CardBaseData Data { get; set; }
 	
 	Sprite2D CardBg { get; set; }
 	Sprite2D CardArt { get; set; }
