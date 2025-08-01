@@ -12,6 +12,7 @@ public class Generation
 
 	public int LengthInSeconds { get; set; }
 	public int ElapsedSeconds { get; set; }
+	public bool IsEnded { get { return LengthInSeconds - ElapsedSeconds <= 0; } }
 
 	public Generation(Vector2I size, TileMapLayer tileMapLayer, Storage storage, int lengthInSeconds)
 	{
@@ -39,9 +40,9 @@ public class Generation
 
 	public Generation Advance() { return new(this); }
 
-	public bool SimulateSecond()
+	public void SimulateSecond()
 	{
-		if (ElapsedSeconds >= LengthInSeconds) { return true; }
+		if (ElapsedSeconds >= LengthInSeconds) { return; }
 
 		Vector2I size = new(TileGrid.Grid.GetLength(0), TileGrid.Grid.GetLength(1));
 		List<Vector2I> tilesOrder = OrderedTiles(size);
@@ -53,7 +54,6 @@ public class Generation
 		}
 
 		ElapsedSeconds++;
-		return ElapsedSeconds >= LengthInSeconds;
 	}
 
 	private List<Vector2I> OrderedTiles(Vector2I size)

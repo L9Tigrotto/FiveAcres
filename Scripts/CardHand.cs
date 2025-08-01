@@ -12,7 +12,7 @@ public partial class CardHand : Node2D
 	[Export] public Curve CardCurvature { get; set; }
 
 	Array<Card> CardsInHand = new();
-	Card SelectedCard { get; set; }
+	public Card SelectedCard { get; set; }
     
 	int cardAmount = 0;
 
@@ -38,6 +38,14 @@ public partial class CardHand : Node2D
 
 		newCard.CardSelected += OnCardClicked;
         
+		RefreshPositions();
+	}
+	
+	public void RemoveSelectedCard()
+	{
+		CardsInHand.Remove(SelectedCard);
+		SelectedCard.QueueFree();
+		SelectedCard = null;
 		RefreshPositions();
 	}
     

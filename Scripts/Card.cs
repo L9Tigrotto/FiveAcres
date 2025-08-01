@@ -9,6 +9,7 @@ public partial class Card : Area2D
 
 	Sprite2D CardBg { get; set; }
 	Sprite2D CardArt { get; set; }
+	Label CardCost { get; set; }
 	Label CardName { get; set; }
 	Label CardDescription { get; set; }
 	
@@ -22,6 +23,7 @@ public partial class Card : Area2D
 	{
 		CardBg = GetNode<Sprite2D>("Card_Bg");
 		CardArt = GetNode<Sprite2D>("Card_Bg/Card_Art");
+		CardCost = GetNode<Label>("Card_Bg/Card_Cost");
 		CardName = GetNode<Label>("Card_Bg/Card_Name");
 		CardDescription = GetNode<Label>("Card_Bg/Card_Desc");
 		
@@ -38,6 +40,7 @@ public partial class Card : Area2D
 		CardInfo = card;
 		
 		CardArt.Texture = card.Image;
+		CardCost.Text = $"{card.PlayCost}";
 		CardName.Text = card.Name;
 		CardDescription.Text = card.Description;
 	}
