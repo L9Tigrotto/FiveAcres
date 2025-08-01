@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqj7yu1mjappr"]
+[gd_scene load_steps=12 format=3 uid="uid://bqj7yu1mjappr"]
 
 [ext_resource type="Script" uid="uid://cp4wpbl4k5iw1" path="res://Scripts/World.cs" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://bvaw3g8jb2xim" path="res://Resources/terrain.png" id="2_45d1s"]
 [ext_resource type="Texture2D" uid="uid://ccdexkx50rgdj" path="res://Resources/grass.png" id="3_p70al"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="6_45d1s"]
-[ext_resource type="PackedScene" uid="uid://b1rd1hwsrvhaf" path="res://Scenes/Hand.tscn" id="7_y7y61"]
+[ext_resource type="PackedScene" uid="uid://bxdk6mrkp64da" path="res://Scenes/Storage.tscn" id="6_y7y61"]
+[ext_resource type="PackedScene" uid="uid://dobhntanvkroo" path="res://Scenes/Hand.tscn" id="7_y7y61"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcbcq"]
 texture = ExtResource("2_45d1s")
@@ -392,3 +393,5 @@ label_settings = SubResource("LabelSettings_p70al")
 position = Vector2(235, 267)
 CardSize = 48
 CardCurvatureMaxHeight = 5
+
+[node name="Storage" parent="." instance=ExtResource("6_y7y61")]

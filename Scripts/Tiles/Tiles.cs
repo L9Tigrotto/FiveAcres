@@ -52,7 +52,7 @@ public static class Tiles
 		[TileType.LateStagePearTree] = new LateStagePearTreeTile(),
 	};
 
-	public static readonly TileType[] EarlyStageSeedTypes =
+	public static readonly TileType[] EarlyStagePlantTypes =
 	[
 		TileType.EarlyStageWheat,
 		TileType.EarlyStageRice,
@@ -60,7 +60,7 @@ public static class Tiles
 		TileType.EarlyStagePotato
 	];
 
-	public static readonly TileType[] MidStageSeedTypes =
+	public static readonly TileType[] MidStagePlantTypes =
 	[
 		TileType.MidStageWheat,
 		TileType.MidStageRice,
@@ -68,7 +68,7 @@ public static class Tiles
 		TileType.MidStagePotato
 	];
 
-	public static readonly TileType[] LateStageSeedTypes =
+	public static readonly TileType[] LateStagePlantTypes =
 	[
 		TileType.LateStageWheat,
 		TileType.LateStageRice,
@@ -134,25 +134,17 @@ file class BaseGrowableTile : ITile
 
 	public TileType ThisType { get; init; }
 	public TileType NextType { get; init; }
-	public bool Swap { get; init; }
+	public bool IsFullGrown { get; init; }
 	public float IncreaseOnFailure { get; init; }
 
 	public Dictionary<Vector2I, float> Data { get; } = [];
 
-	public BaseGrowableTile(TileType thisType, TileType nextType, float increaseOnFailure = 0.03f)
+	public BaseGrowableTile(TileType thisType, TileType nextType, float increaseOnFailure = 0.03f, bool isFullGrown = false)
 	{
 		ThisType = thisType;
 		NextType = nextType;
-		Swap = true;
+		IsFullGrown = isFullGrown;
 		IncreaseOnFailure = increaseOnFailure;
-	}
-
-	public BaseGrowableTile(TileType thisType)
-	{
-		ThisType = thisType;
-		NextType = TileType.Empty;
-		Swap = false;
-		IncreaseOnFailure = 0.0f; // no increase on failure
 	}
 
 	public virtual void ResetData(Vector2I postion)
@@ -162,7 +154,7 @@ file class BaseGrowableTile : ITile
 
 	public void SimulateSecond(int second, Vector2I thisPostion, TileGrid grid)
 	{
-		if (!Swap || second == 0 || second % 2 != 0) { return; }
+		if (IsFullGrown || second == 0 || second % 2 != 0) { return; }
 
 		float roll = grid.Random.NextSingle();
 		float cellProbability = Data[thisPostion];
@@ -172,6 +164,27 @@ file class BaseGrowableTile : ITile
 			Data[thisPostion] = 0.0f; // reset the probability for this tile
 		}
 		else { Data[thisPostion] = cellProbability += IncreaseOnFailure; }
+	}
+
+	public virtual void Click(Vector2I thisPostion, TileGrid grid, Storage storage)
+	{
+		int generatedValue = grid.Random.Next(1, 5);
+
+		switch (ThisType)
+		{
+			case TileType.LateStageWheat: storage.AddWheat(generatedValue); break;
+			case TileType.LateStageRice: storage.AddRice(generatedValue); break;
+			case TileType.LateStageCarrot: storage.AddCarrot(generatedValue); break;
+			case TileType.LateStagePotato: storage.AddPotato(generatedValue); break;
+
+			case TileType.LateStageAppleTree: storage.AddApple(generatedValue); break;
+			case TileType.LateStageCherryTree: storage.AddCherry(generatedValue); break;
+			case TileType.LateStagePeachTree: storage.AddPeach(generatedValue); break;
+			case TileType.LateStagePearTree: storage.AddPear(generatedValue); break;
+		}
+
+		grid.SetCell(thisPostion, NextType);
+		Data[thisPostion] = 0.0f; // reset the probability for this tile
 	}
 }
 
@@ -184,7 +197,7 @@ file class MidStageWheatTile() : BaseGrowableTile(
 	thisType: TileType.MidStageWheat, nextType: TileType.LateStageWheat)
 { }
 
-file class LateStageWheatTile() : BaseGrowableTile(thisType: TileType.LateStageWheat) { }
+file class LateStageWheatTile() : BaseGrowableTile(thisType: TileType.LateStageWheat, TileType.EarlyStageWheat, isFullGrown: true) { }
 
 
 // rice stages
@@ -197,7 +210,7 @@ file class MidStageRiceTile() : BaseGrowableTile(
 { }
 
 file class LateStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.LateStageRice)
+	thisType: TileType.LateStageRice, TileType.EarlyStageRice)
 { }
 
 
@@ -211,7 +224,7 @@ file class MidStageCarrotTile() : BaseGrowableTile(
 { }
 
 file class LateStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.LateStageCarrot)
+	thisType: TileType.LateStageCarrot, TileType.EarlyStageCarrot)
 { }
 
 
@@ -225,16 +238,18 @@ file class MidStagePotatoTile() : BaseGrowableTile(
 { }
 
 file class LateStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.LateStagePotato)
+	thisType: TileType.LateStagePotato, TileType.EarlyStagePotato)
 { }
+
+
+
+
+
 
 file class EarlyStageAppleTreeTile() : ITile
 {
 	public TileType Type { get; } = TileType.EarlyStageAppleTree;
 }
-
-
-
 
 file class EarlyStageCherryTreeTile() : ITile
 {
