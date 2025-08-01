@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rsjv5528qrkk"
-path="res://.godot/imported/card_bg.png-3000e83510faafbee611242d7edfb9ca.ctex"
+uid="uid://qmrad7ebujjx"
+path="res://.godot/imported/scissor.png-0dbabdcc6dcb610308d0c29a1cdb4b95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/card_bg.png"
-dest_files=["res://.godot/imported/card_bg.png-3000e83510faafbee611242d7edfb9ca.ctex"]
+source_file="res://Resources/card_arts/scissor.png"
+dest_files=["res://.godot/imported/scissor.png-0dbabdcc6dcb610308d0c29a1cdb4b95.ctex"]
 
 [params]
 

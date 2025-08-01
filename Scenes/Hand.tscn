@@ -8,6 +8,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 3.57564, 3.57564, 0, 
 point_count = 4
 
 [node name="Card_Hand" type="Node2D"]
+position = Vector2(193, 138)
 script = ExtResource("1_0xaq6")
 CardScene = ExtResource("2_q1mbt")
 CardSize = 100
