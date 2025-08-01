@@ -12,6 +12,7 @@ public partial class World : Node
 	private TileMapLayer TileMapLayer { get; set; }
 	private Label GenerationLabel { get; set; }
 	private Label TimeLeftLabel { get; set; }
+	private Shop ShopMenu { get; set; }
 
 	public override void _Ready()
 	{
@@ -28,12 +29,16 @@ public partial class World : Node
 
 		TimeLeftLabel = GetNode<Label>("TimeLeftLabel");
 		UpdateTimeLeftLabel();
+
+		ShopMenu = GetNode<Shop>("Shop");
 	}
 
 	private double Elapsed { get; set; } = 0;
 	private bool IsGenerationEnded { get; set; } = false;
 	public override void _Process(double delta)
 	{
+		if (ShopMenu.IsOpen) { return; }
+
 		if (IsGenerationEnded)
 		{
 			Generation nextGeneration = CurrentGeneration.Advance();

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Storage : Node2D
 {
@@ -55,6 +56,25 @@ public partial class Storage : Node2D
 		CherryLabel.Text = $"{CherryCount}";
 		PeachLabel.Text = $"{PeachCount}";
 		PearLabel.Text = $"{PearCount}";
+	}
+
+	public void AddItem(ItemType itemType, int amount)
+	{
+		switch (itemType)
+		{
+			case ItemType.None: return;
+
+			case ItemType.Wheat: AddWheat(amount); break;
+			case ItemType.Rice: AddRice(amount); break;
+			case ItemType.Carrot: AddCarrot(amount); break;
+			case ItemType.Potato: AddPotato(amount); break;
+
+			case ItemType.Apple: AddApple(amount); break;
+			case ItemType.Cherry: AddCherry(amount); break;
+			case ItemType.Peach: AddPeach(amount); break;
+			case ItemType.Pear: AddPear(amount); break;
+			default: throw new UnreachableException($"Unknown item: {itemType}");
+		}
 	}
 
 	public void AddWheat(int amount)

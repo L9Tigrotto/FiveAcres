@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxdk6mrkp64da"]
 
-[ext_resource type="Script" uid="uid://b3pd0irkf4na6" path="res://Scenes/Storage.cs" id="1_tvprw"]
+[ext_resource type="Script" uid="uid://b3pd0irkf4na6" path="res://Scripts/Storage.cs" id="1_tvprw"]
 [ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="2_ffo6q"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="3_clmel"]
 [ext_resource type="Texture2D" uid="uid://cc50o6wvf8lci" path="res://Resources/card_arts/carot.png" id="4_ffo6q"]

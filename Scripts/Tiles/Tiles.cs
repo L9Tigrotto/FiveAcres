@@ -1,5 +1,6 @@
 
 using Godot;
+using System;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -105,47 +106,50 @@ public static class Tiles
 
 file class EmptyTile() : ITile
 {
-	public TileType Type { get; } = TileType.Empty;
+	public TileType Type { get; init; } = TileType.Empty;
+	public int MinHarvest { get; init; } = 0;
+	public int MaxHarvest { get; init; } = 0;
 }
 
 file class GrassTile() : ITile
 {
-	public TileType Type { get; } = TileType.Grass;
+	public TileType Type { get; init; } = TileType.Grass;
+	public int MinHarvest { get; init; } = 0;
+	public int MaxHarvest { get; init; } = 0;
 }
 
 file class SoilTile() : ITile
 {
-	public TileType Type { get; } = TileType.Soil;
+	public TileType Type { get; init; } = TileType.Soil;
+	public int MinHarvest { get; init; } = 0;
+	public int MaxHarvest { get; init; } = 0;
 }
 
 file class StoneTile() : ITile
 {
-	public TileType Type { get; } = TileType.Stone;
+	public TileType Type { get; init; } = TileType.Stone;
+	public int MinHarvest { get; init; } = 0;
+	public int MaxHarvest { get; init; } = 0;
 }
 
 file class WeedTile() : ITile
 {
-	public TileType Type { get; } = TileType.Weed;
+	public TileType Type { get; init; } = TileType.Weed;
+	public int MinHarvest { get; init; } = 0;
+	public int MaxHarvest { get; init; } = 0;
 }
 
-file class BaseGrowableTile : ITile
+file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest = 0, int maxHarvest = 0, float probabilityIncreaseOnFailure = 0.03f) : ITile
 {
 	public TileType Type { get { return ThisType; } }
 
-	public TileType ThisType { get; init; }
-	public TileType NextType { get; init; }
-	public bool IsFullGrown { get; init; }
-	public float IncreaseOnFailure { get; init; }
+	public TileType ThisType { get; init; } = thisType;
+	public TileType NextType { get; init; } = nextType;
+	public int MinHarvest { get; init; } = minHarvest;
+	public int MaxHarvest { get; init; } = maxHarvest;
+	public float ProbabilityIncreaseOnFailure { get; init; } = probabilityIncreaseOnFailure;
 
 	public Dictionary<Vector2I, float> Data { get; } = [];
-
-	public BaseGrowableTile(TileType thisType, TileType nextType, float increaseOnFailure = 0.03f, bool isFullGrown = false)
-	{
-		ThisType = thisType;
-		NextType = nextType;
-		IsFullGrown = isFullGrown;
-		IncreaseOnFailure = increaseOnFailure;
-	}
 
 	public virtual void ResetData(Vector2I postion)
 	{
@@ -154,7 +158,7 @@ file class BaseGrowableTile : ITile
 
 	public void SimulateSecond(int second, Vector2I thisPostion, TileGrid grid)
 	{
-		if (IsFullGrown || second == 0 || second % 2 != 0) { return; }
+		if (ThisType.CanBeHarvested() || second == 0 || second % 2 != 0) { return; }
 
 		float roll = grid.Random.NextSingle();
 		float cellProbability = Data[thisPostion];
@@ -163,145 +167,130 @@ file class BaseGrowableTile : ITile
 			grid.SetCell(thisPostion, NextType);
 			Data[thisPostion] = 0.0f; // reset the probability for this tile
 		}
-		else { Data[thisPostion] = cellProbability += IncreaseOnFailure; }
+		else { Data[thisPostion] = cellProbability += ProbabilityIncreaseOnFailure; }
 	}
 
 	public virtual void Click(Vector2I thisPostion, TileGrid grid, Storage storage)
 	{
-		int generatedValue = grid.Random.Next(1, 5);
+		if (!ThisType.CanBeHarvested()) { return; }
 
-		switch (ThisType)
-		{
-			case TileType.LateStageWheat: storage.AddWheat(generatedValue); break;
-			case TileType.LateStageRice: storage.AddRice(generatedValue); break;
-			case TileType.LateStageCarrot: storage.AddCarrot(generatedValue); break;
-			case TileType.LateStagePotato: storage.AddPotato(generatedValue); break;
-
-			case TileType.LateStageAppleTree: storage.AddApple(generatedValue); break;
-			case TileType.LateStageCherryTree: storage.AddCherry(generatedValue); break;
-			case TileType.LateStagePeachTree: storage.AddPeach(generatedValue); break;
-			case TileType.LateStagePearTree: storage.AddPear(generatedValue); break;
-		}
+		int generatedValue = grid.Random.Next(MinHarvest, MaxHarvest + 1);
+		storage.AddItem(ThisType.HarvestType(), generatedValue);
 
 		grid.SetCell(thisPostion, NextType);
 		Data[thisPostion] = 0.0f; // reset the probability for this tile
 	}
 }
 
+file class BaseHarvestablePlantsTile : BaseGrowableTile
+{
+	public BaseHarvestablePlantsTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.03f)
+		: base(thisType, nextType, minHarvest: 1, maxHarvest: 5, probabilityIncreaseOnFailure)
+	{
+		if (!thisType.CanBeHarvested()) 
+		{ 
+			throw new ArgumentException(
+				$"TileType {thisType} cannot be harvested, but BaseHarvestableTile requires it to be harvestable.");
+		}
+	}
+}
+
+file class BaseHarvestableTreeTile : BaseGrowableTile
+{
+	public BaseHarvestableTreeTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.03f)
+		: base(thisType, nextType, minHarvest: 2, maxHarvest: 10, probabilityIncreaseOnFailure)
+	{
+		if (!thisType.CanBeHarvested())
+		{
+			throw new ArgumentException(
+				$"TileType {thisType} cannot be harvested, but BaseHarvestableTile requires it to be harvestable.");
+		}
+	}
+}
+
 // wheat stages
 file class EarlyStageWheatTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageWheat, nextType: TileType.MidStageWheat)
-{ }
+	thisType: TileType.EarlyStageWheat, nextType: TileType.MidStageWheat);
 
 file class MidStageWheatTile() : BaseGrowableTile(
-	thisType: TileType.MidStageWheat, nextType: TileType.LateStageWheat)
-{ }
+	thisType: TileType.MidStageWheat, nextType: TileType.LateStageWheat);
 
-file class LateStageWheatTile() : BaseGrowableTile(thisType: TileType.LateStageWheat, TileType.EarlyStageWheat, isFullGrown: true) { }
+file class LateStageWheatTile() : BaseHarvestablePlantsTile(
+	thisType: TileType.LateStageWheat, nextType: TileType.EarlyStageWheat);
 
 
 // rice stages
 file class EarlyStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageRice, nextType: TileType.MidStageRice)
-{ }
+	thisType: TileType.EarlyStageRice, nextType: TileType.MidStageRice);
 
 file class MidStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.MidStageRice, nextType: TileType.LateStageRice)
-{ }
+	thisType: TileType.MidStageRice, nextType: TileType.LateStageRice);
 
-file class LateStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.LateStageRice, TileType.EarlyStageRice)
-{ }
+file class LateStageRiceTile() : BaseHarvestablePlantsTile(
+	thisType: TileType.LateStageRice, nextType: TileType.EarlyStageRice);
 
 
 // carrot stages
 file class EarlyStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageCarrot, nextType: TileType.MidStageCarrot)
-{ }
+	thisType: TileType.EarlyStageCarrot, nextType: TileType.MidStageCarrot);
 
 file class MidStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.MidStageCarrot, nextType: TileType.LateStageCarrot)
-{ }
+	thisType: TileType.MidStageCarrot, nextType: TileType.LateStageCarrot);
 
-file class LateStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.LateStageCarrot, TileType.EarlyStageCarrot)
-{ }
+file class LateStageCarrotTile() : BaseHarvestablePlantsTile(
+	thisType: TileType.LateStageCarrot, nextType: TileType.EarlyStageCarrot);
 
 
 // potato stages
 file class EarlyStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStagePotato, nextType: TileType.MidStagePotato)
-{ }
+	thisType: TileType.EarlyStagePotato, nextType: TileType.MidStagePotato);
 
 file class MidStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.MidStagePotato, nextType: TileType.LateStagePotato)
-{ }
+	thisType: TileType.MidStagePotato, nextType: TileType.LateStagePotato);
 
-file class LateStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.LateStagePotato, TileType.EarlyStagePotato)
-{ }
+file class LateStagePotatoTile() : BaseHarvestablePlantsTile(
+	thisType: TileType.LateStagePotato, nextType: TileType.EarlyStagePotato);
 
 
+// apple stages
+file class EarlyStageAppleTreeTile() : BaseGrowableTile(
+	thisType: TileType.EarlyStageAppleTree, nextType: TileType.MidStageAppleTree);
+
+file class MidStageAppleTreeTile() : BaseGrowableTile(
+	thisType: TileType.MidStageAppleTree, nextType: TileType.LateStageAppleTree);
+
+file class LateStageAppleTreeTile() : BaseHarvestableTreeTile(
+	thisType: TileType.LateStageAppleTree, nextType: TileType.MidStageAppleTree);
 
 
+// cherry stages
+file class EarlyStageCherryTreeTile() : BaseGrowableTile(
+	thisType: TileType.EarlyStageCherryTree, nextType: TileType.MidStageCherryTree);
+
+file class MidStageCherryTreeTile() : BaseGrowableTile(
+	thisType: TileType.MidStageCherryTree, nextType: TileType.LateStageCherryTree);
+
+file class LateStageCherryTreeTile() : BaseHarvestableTreeTile(
+	thisType: TileType.LateStageCherryTree, nextType: TileType.MidStageCherryTree);
 
 
-file class EarlyStageAppleTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.EarlyStageAppleTree;
-}
+// peach stages
+file class EarlyStagePeachTreeTile() : BaseGrowableTile(
+	thisType: TileType.EarlyStagePeachTree, nextType: TileType.MidStagePeachTree);
 
-file class EarlyStageCherryTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.EarlyStageCherryTree;
-}
+file class MidStagePeachTreeTile() : BaseGrowableTile(
+	thisType: TileType.MidStagePeachTree, nextType: TileType.LateStagePeachTree);
 
-file class EarlyStagePeachTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.EarlyStagePeachTree;
-}
+file class LateStagePeachTreeTile() : BaseHarvestableTreeTile(
+	thisType: TileType.LateStagePeachTree, nextType: TileType.MidStagePeachTree);
 
-file class EarlyStagePearTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.EarlyStagePearTree;
-}
 
-file class MidStageAppleTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.MidStageAppleTree;
-}
+// pear stages
+file class EarlyStagePearTreeTile() : BaseGrowableTile(
+	thisType: TileType.EarlyStagePearTree, nextType: TileType.MidStagePearTree);
 
-file class MidStageCherryTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.MidStageCherryTree;
-}
+file class MidStagePearTreeTile() : BaseGrowableTile(
+	thisType: TileType.MidStagePearTree, nextType: TileType.LateStagePearTree);
 
-file class MidStagePeachTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.MidStagePeachTree;
-}
-
-file class MidStagePearTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.MidStagePearTree;
-}
-
-file class LateStageAppleTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.LateStageAppleTree;
-}
-
-file class LateStageCherryTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.LateStageCherryTree;
-}
-
-file class LateStagePeachTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.LateStagePeachTree;
-}
-
-file class LateStagePearTreeTile() : ITile
-{
-	public TileType Type { get; } = TileType.LateStagePearTree;
-}
+file class LateStagePearTreeTile() : BaseHarvestableTreeTile(
+	thisType: TileType.LateStagePearTree, nextType: TileType.MidStagePearTree);
