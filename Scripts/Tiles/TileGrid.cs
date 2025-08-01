@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public class TileGrid
 {
@@ -22,17 +23,36 @@ public class TileGrid
 			}
 		}
 
-		// fill the grid with grass
+		// fill the grid with grass / stone / weed
+
+		FastNoiseLite noise = new()
+		{
+			Offset = new Vector3(
+				Random.NextSingle() * 100000,
+				Random.NextSingle() * 100000,
+				Random.NextSingle() * 100000),
+			NoiseType = FastNoiseLite.NoiseTypeEnum.Simplex,
+			Frequency = 0.15f
+		};
+
 		for (int x = 0; x < size.X; x++)
 		{
 			for (int y = 0; y < size.Y; y++)
 			{
-				SetCell(new Vector2I(x, y), TileType.Grass);
+				float value = (noise.GetNoise2D(x, y) + 1) / 2;
+				Vector2I postition = new(x, y);
+
+				switch (value)
+				{
+					case < 0.35f: SetCell(postition, TileType.Stone); break;
+					case < 0.50f: SetCell(postition, TileType.Weed); break;
+					default: SetCell(postition, TileType.Grass); break;
+				}
 			}
 		}
 
 		// force wheat seed for debug
-		SetCell(new Vector2I(size.X / 2, size.Y / 2), TileType.EarlyStageWheat);
+		//SetCell(new Vector2I(size.X / 2, size.Y / 2), TileType.EarlyStageWheat);
 
 		// place some trees
 		int numberOfTrees = random.Next(1, 3);
@@ -44,21 +64,7 @@ public class TileGrid
 
 			if (!isTreePlantable) { continue; }
 
-			TileType treeType = Tiles.LateStageTreeTypes[random.Next(0, Tiles.LateStageTreeTypes.Length)];
-			SetCell(new Vector2I(x, y), treeType);
-		}
-
-		// place some weeds
-		int numberOfWeeds = random.Next(0, 2);
-		for (int i = 0; i < numberOfTrees; i++)
-		{
-			int x = random.Next(0 + 1, size.X - 1);
-			int y = random.Next(0 + 1, size.Y - 1);
-			bool isWeedPlantable = Grid[x, y].Type == TileType.Grass;
-
-			if (!isWeedPlantable) { continue; }
-
-			TileType treeType = Tiles.LateStageTreeTypes[random.Next(0, Tiles.LateStageTreeTypes.Length)];
+			TileType treeType = Tiles.EarlyStageTreeTypes[random.Next(0, Tiles.EarlyStageTreeTypes.Length)];
 			SetCell(new Vector2I(x, y), treeType);
 		}
 	}
