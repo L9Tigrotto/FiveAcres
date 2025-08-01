@@ -57,15 +57,16 @@ public partial class CardHand : Node2D
 		Vector2 startPosition = new(-totalSpace / 2, 0);
 		Vector2 spacing = new(CardSize + CardSpacing, 0);
 
-        
 		for (int i = 0; i < CardsInHand.Count; i++)
 		{
 			Card card = CardsInHand[i];
 			Tween tween = card.GetTree().CreateTween();
 
 			//Calculate for each card in hand their new position
-			Vector2 newPosition = startPosition + i * spacing;
-			newPosition += Vector2.Down * (CardSize/2.0f - CardCurvature.Sample((float)i/(CardsInHand.Count-1)) * CardCurvatureMaxHeight);
+			Vector2 newPosition = i * spacing;
+			
+			if(CardsInHand.Count > 1)
+				newPosition += Vector2.Down * (CardSize/2.0f - CardCurvature.Sample((float)i/(CardsInHand.Count-1)) * CardCurvatureMaxHeight);
 
 			//Tween from oldPos to newPos
 			tween.TweenProperty(card, "position", newPosition, 0.08f).SetTrans(Tween.TransitionType.Elastic);
