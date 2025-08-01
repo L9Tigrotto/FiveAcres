@@ -60,46 +60,46 @@ public static class TileTypeExtensions
 		{
 			TileType.Grass => new(1, 0),
 			TileType.Soil => new(2, 0),
-			TileType.Stone => new(0, 0),
+			TileType.Stone => new(0, 9),
 			//TileType.Water => new(2, 3),
 
 			TileType.Weed => new(random.Next(0, 2 + 1), 2),
 
 			// early stage seeds
 			TileType.EarlyStageWheat => new(0, 1),
-			TileType.EarlyStageRice => new(0, 0),
-			TileType.EarlyStageCarrot => new(0, 0),
-			TileType.EarlyStagePotato => new(0, 0),
+			TileType.EarlyStageRice => new(0, 3),
+			TileType.EarlyStageCarrot => new(0, 4),
+			TileType.EarlyStagePotato => new(0, 5),
 
 			// mid stage seeds
 			TileType.MidStageWheat => new(1, 1),
-			TileType.MidStageRice => new(0, 0),
-			TileType.MidStageCarrot => new(0, 0),
-			TileType.MidStagePotato => new(0, 0),
+			TileType.MidStageRice => new(1, 3),
+			TileType.MidStageCarrot => new(1, 4),
+			TileType.MidStagePotato => new(1, 5),
 
 			// late stage seeds
 			TileType.LateStageWheat => new(2, 1),
-			TileType.LateStageRice => new(0, 0),
-			TileType.LateStageCarrot => new(0, 0),
-			TileType.LateStagePotato => new(0, 0),
+			TileType.LateStageRice => new(2, 3),
+			TileType.LateStageCarrot => new(2, 4),
+			TileType.LateStagePotato => new(2, 5),
 
 			// early stage trees
-			TileType.EarlyStageAppleTree => new(0, 0),
-			TileType.EarlyStageCherryTree => new(0, 0),
-			TileType.EarlyStagePeachTree => new(0, 0),
-			TileType.EarlyStagePearTree => new(0, 0),
+			TileType.EarlyStageAppleTree => new(0, 6),
+			TileType.EarlyStageCherryTree => new(0, 6),
+			TileType.EarlyStagePeachTree => new(0, 6),
+			TileType.EarlyStagePearTree => new(0, 6),
 
 			// mid stage trees
-			TileType.MidStageAppleTree => new(0, 0),
-			TileType.MidStageCherryTree => new(0, 0),
-			TileType.MidStagePeachTree => new(0, 0),
-			TileType.MidStagePearTree => new(0, 0),
+			TileType.MidStageAppleTree => new(1, 6),
+			TileType.MidStageCherryTree => new(0, 7),
+			TileType.MidStagePeachTree => new(1, 8),
+			TileType.MidStagePearTree => new(2, 7),
 
 			// late stage trees
-			TileType.LateStageAppleTree => new(0, 0),
-			TileType.LateStageCherryTree => new(0, 0),
-			TileType.LateStagePeachTree => new(0, 0),
-			TileType.LateStagePearTree => new(0, 0),
+			TileType.LateStageAppleTree => new(2, 6),
+			TileType.LateStageCherryTree => new(1, 7),
+			TileType.LateStagePeachTree => new(2, 8),
+			TileType.LateStagePearTree => new(0, 8),
 			_ => throw new UnreachableException()
 		};
 	}
