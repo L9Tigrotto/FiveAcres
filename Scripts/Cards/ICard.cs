@@ -8,7 +8,8 @@ public interface ICard
 	public string Name { get; }
 	public string Description { get; }
 
-	public (ItemType Type, int Amount)[] Cost { get; }
+	public (ItemType Type, int Amount)[] StoreCost { get; }
+	public int PlayCost { get; }
 
 	public int Radius { get; }
 
