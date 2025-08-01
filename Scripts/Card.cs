@@ -60,7 +60,7 @@ public partial class Card : Area2D
 			_originalPosition = CardBg.Position;
 			
 			CardBg.ZIndex = 10;
-			CardBg.Position = new Vector2(0, -(CardBg.Texture.GetHeight()/2.0f) * Scale.Y/2);
+			CardBg.Position = new Vector2(0, -(CardBg.Texture.GetHeight()));
 			CardBg.Scale = _originalScale * new Vector2(1.25f, 1.25f);
 			_isSelected = true;
 		}

@@ -26,12 +26,11 @@ font_size = 18
 size = Vector2(42.2438, 57.7527)
 
 [node name="Card" type="Area2D"]
-scale = Vector2(4, 4)
 script = ExtResource("1_kphy1")
 Data = ExtResource("2_wejov")
 
 [node name="Card_Bg" type="Sprite2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -27)
 texture = ExtResource("1_3p273")
 
 [node name="Card_Art" type="Sprite2D" parent="Card_Bg"]
@@ -74,7 +73,6 @@ vertical_alignment = 1
 [node name="CardPivot" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-0.374619, -20.1224)
+position = Vector2(0, -27)
 rotation = -0.00299437
 shape = SubResource("RectangleShape2D_kphy1")
