@@ -22,13 +22,14 @@ public partial class CardHand : Node2D
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustReleased("ui_accept")) AddCard();
+		if (Input.IsActionJustReleased("ui_accept")) AddCard(Cards.GetRandomCard());
 	}
     
-	public void AddCard()
+	public void AddCard(ICard card)
 	{
 		Card newCard = CardScene.Instantiate<Card>();
 		newCard.Position = Vector2.Down * CardSize;
+		newCard.SetCard(card);
 
 		//Add card to cards in hand
 		CardsInHand.Add(newCard);

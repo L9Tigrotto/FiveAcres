@@ -2,6 +2,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 public static class Cards
 {
@@ -23,6 +24,27 @@ public static class Cards
 		new RemoveWeed3Card(),
 		new RemoveWeed4Card(),
 	];
+
+	public static ICard GetSpecificOrRandomCard(string name)
+	{
+		int index = -1;
+		for (int i = 0; i < AllCards.Length; i++)
+		{
+			if (AllCards[i].Name == name) { index = i; break; }
+		}
+
+		if (index == -1) { index = Random.Shared.Next(AllCards.Length); }
+
+		return AllCards[index];
+	}
+
+	public static ICard GetRandomCard()
+	{
+		int index = Random.Shared.Next(AllCards.Length);
+
+		GD.Print($"Card found at index {index}");
+		return AllCards[index];
+	}
 }
 
 file class EmptyCard() : ICard
@@ -79,14 +101,14 @@ file class PlantRiceCard() : DefaultReplaceTileCard(
 file class PlantCarrotCard() : DefaultReplaceTileCard(
 	imagePath: "res://Resources/card_arts/carrot.png",
 	name: "Plant Carrot", description: "Plant a carrot on soil. \n-Grows very slowly \n-Very big yield",
-	cost: [(ItemType.Wheat, 15)], 
+	cost: [(ItemType.Wheat, 15)],
 	radius: 1,
 	replaceWith: TileType.EarlyStageCarrot, (tileType) => { return tileType == TileType.Soil; });
 
 file class PlantPotatoCard() : DefaultReplaceTileCard(
 	imagePath: "res://Resources/card_arts/potato.png",
 	name: "Plant Potato", description: "Plant a potato on soil. \n-Grows slowly \n-Big yield",
-	cost: [(ItemType.Rice, 15)], 
+	cost: [(ItemType.Rice, 15)],
 	radius: 1,
 	replaceWith: TileType.EarlyStagePotato, (tileType) => { return tileType == TileType.Soil; });
 
@@ -101,21 +123,21 @@ file class PlantAppleTreeCard() : DefaultReplaceTileCard(
 file class PlantCherryTreeCard() : DefaultReplaceTileCard(
 	imagePath: "res://Resources/card_arts/cherry.png",
 	name: "Apple Cherry", description: "It will take at least a generation to grow. Will it be worth?",
-	cost: [(ItemType.Pear, 50)], 
+	cost: [(ItemType.Pear, 50)],
 	radius: 1,
 	replaceWith: TileType.EarlyStageCherryTree, (tileType) => { return tileType == TileType.Soil; });
 
 file class PlantPeachTreeCard() : DefaultReplaceTileCard(
 	imagePath: "res://Resources/card_arts/peach.png",
 	name: "Apple Peach", description: "It will take at least a generation to grow. Will it be worth?",
-	cost: [(ItemType.Cherry, 50)], 
+	cost: [(ItemType.Cherry, 50)],
 	radius: 1,
 	replaceWith: TileType.EarlyStagePeachTree, (tileType) => { return tileType == TileType.Soil; });
 
 file class PlantPearTreeCard() : DefaultReplaceTileCard(
 	imagePath: "res://Resources/card_arts/pear.png",
 	name: "Apple Pear", description: "It will take at least a generation to grow. Will it be worth?",
-	cost: [(ItemType.Apple, 50)], 
+	cost: [(ItemType.Apple, 50)],
 	radius: 1,
 	replaceWith: TileType.EarlyStagePotato, (tileType) => { return tileType == TileType.Soil; });
 

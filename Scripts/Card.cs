@@ -4,20 +4,20 @@ using System;
 public partial class Card : Area2D
 {
 	//[Export] public CardBaseData Data { get; set; }
-	
+
+	public ICard CardInfo { get; set; }
+
 	Sprite2D CardBg { get; set; }
 	Sprite2D CardArt { get; set; }
 	Label CardName { get; set; }
 	Label CardDescription { get; set; }
-
-	Vector2 _originalPosition;
-	Vector2 _originalScale;	
-	bool _isSelected;
 	
 	[Signal]
 	public delegate void CardSelectedEventHandler(Card card);
+	Vector2 _originalPosition;
+	Vector2 _originalScale;
+	bool _isSelected;
 
-	
 	public override void _Ready()
 	{
 		CardBg = GetNode<Sprite2D>("Card_Bg");
@@ -31,6 +31,15 @@ public partial class Card : Area2D
 		//CardArt.Texture = Data.Art;
 		//CardName.Text = Data.Name;
 		//CardDescription.Text = Data.Description;
+	}
+
+	public void SetCard(ICard card)
+	{
+		CardInfo = card;
+		
+		CardArt.Texture = card.Image;
+		CardName.Text = card.Name;
+		CardDescription.Text = card.Description;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
