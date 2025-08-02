@@ -107,10 +107,13 @@ public partial class World : Node
 				}
 			}
 
-			cardInfo.Use(areaOfEffect, CurrentGeneration.TileGrid);
-			CardHand.RemoveSelectedCard();
-			CurrentGeneration.ElapsedSeconds += cardInfo.PlayCost;
-			UpdateTimeLeftLabel();
+			bool isConsumed = cardInfo.Use(areaOfEffect, CurrentGeneration.TileGrid);
+			if (isConsumed)
+			{
+				CardHand.RemoveSelectedCard();
+				CurrentGeneration.ElapsedSeconds += cardInfo.PlayCost;
+				UpdateTimeLeftLabel();
+			}
 		}
 	}
 

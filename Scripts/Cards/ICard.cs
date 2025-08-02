@@ -13,6 +13,6 @@ public interface ICard
 
 	public int Radius { get; }
 
-	public virtual void Use(List<Vector2I> areaOfEffect, TileGrid tileGrid) { }
+	public virtual bool Use(List<Vector2I> areaOfEffect, TileGrid tileGrid) { return true; }
 }
 

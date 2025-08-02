@@ -71,15 +71,21 @@ file class DefaultReplaceTileCard(string imagePath, string name, string descript
 
 	public int Radius { get; init; } = radius;
 
-	public void Use(List<Vector2I> areaOfEffect, TileGrid tileGrid)
+	public bool Use(List<Vector2I> areaOfEffect, TileGrid tileGrid)
 	{
-		GD.Print($"{areaOfEffect.Count}");
+		int affected = 0;
 		foreach (Vector2I position in areaOfEffect)
 		{
 			TileType tileType = tileGrid.Grid[position.X, position.Y].Type;
 
-			if (replacePredicate(tileType) || tileType == TileType.Grass) { tileGrid.SetCell(position, replaceWith); }
+			if (replacePredicate(tileType) || tileType == TileType.Grass)
+			{
+				affected++;
+				tileGrid.SetCell(position, replaceWith);
+			}
 		}
+
+		return Radius > 1 || affected > 0;
 	}
 }
 
