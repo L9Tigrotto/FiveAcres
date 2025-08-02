@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqj7yu1mjappr"]
+[gd_scene load_steps=19 format=3 uid="uid://bqj7yu1mjappr"]
 
 [ext_resource type="Script" uid="uid://cp4wpbl4k5iw1" path="res://Scripts/World.cs" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://cc3pmpn7a3ybn" path="res://Resources/terrain.png" id="2_45d1s"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dejea47savkr3" path="res://Scenes/Shop.tscn" id="7_q2d71"]
 [ext_resource type="PackedScene" uid="uid://dobhntanvkroo" path="res://Scenes/Hand.tscn" id="7_y7y61"]
 [ext_resource type="Texture2D" uid="uid://b5tdxbt7yokcx" path="res://Resources/card_arts/outline.png" id="9_uo7di"]
+[ext_resource type="AudioStream" uid="uid://cfgl0uvbs4m6x" path="res://Resources/Sounds/Ambience.wav" id="10_op4cu"]
+[ext_resource type="AudioStream" uid="uid://ddty2en8i7031" path="res://Resources/Sounds/Harvest.wav" id="11_7yo87"]
+[ext_resource type="AudioStream" uid="uid://bvxatoyr0mrq5" path="res://Resources/Sounds/Snip.wav" id="12_ti1bm"]
+[ext_resource type="AudioStream" uid="uid://c4efvfcxqv6ea" path="res://Resources/Sounds/RockBreak.wav" id="13_op4cu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcbcq"]
 texture = ExtResource("2_45d1s")
@@ -454,3 +458,19 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 1
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_op4cu")
+autoplay = true
+
+[node name="HarvestSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_7yo87")
+volume_db = -10.0
+
+[node name="SnipSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ti1bm")
+volume_db = -5.0
+
+[node name="PickaxeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_op4cu")
+volume_db = -10.0

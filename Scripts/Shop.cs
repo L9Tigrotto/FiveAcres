@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Shop : Control
 {
@@ -30,15 +31,18 @@ public partial class Shop : Control
 	private Label Card2Cost2Label { get; set; }
 	private Label Card3Cost1Label { get; set; }
 	private Label Card3Cost2Label { get; set; }
-	
+
 	private Label ComeBackLabel { get; set; }
-	
+
 	private Sprite2D Card1Sold { get; set; }
 	private Sprite2D Card2Sold { get; set; }
 	private Sprite2D Card3Sold { get; set; }
-	
+
 	private Storage Storage { get; set; }
 	private CardHand CardHand { get; set; }
+
+	private AudioStreamPlayer BuySound { get; set; }
+	private AudioStreamPlayer CantBuySound { get; set; }
 
 	public override void _Ready()
 	{
@@ -93,7 +97,7 @@ public partial class Shop : Control
 		Card2Cost2Label.Visible = false;
 		Card3Cost1Label.Visible = false;
 		Card3Cost2Label.Visible = false;
-		
+
 		Card1Sold = GetNode<Sprite2D>("Card1Sold");
 		Card2Sold = GetNode<Sprite2D>("Card2Sold");
 		Card3Sold = GetNode<Sprite2D>("Card3Sold");
@@ -101,10 +105,13 @@ public partial class Shop : Control
 		Card1Sold.Visible = false;
 		Card2Sold.Visible = false;
 		Card3Sold.Visible = false;
-		
+
 		ComeBackLabel = GetNode<Label>("ComeBackLater");
 
 		Refill();
+
+		BuySound = GetNode<AudioStreamPlayer>("BuySound");
+		CantBuySound = GetNode<AudioStreamPlayer>("CantBuySound");
 	}
 
 	public void Open()
@@ -113,7 +120,7 @@ public partial class Shop : Control
 		OpenShopButton.Visible = !IsOpen;
 		CloseShopButton.Visible = IsOpen;
 		Background.Visible = IsOpen;
-		
+
 		Card1.Visible = IsCard1Available;
 		Card2.Visible = IsCard2Available;
 		Card3.Visible = IsCard3Available;
@@ -131,12 +138,12 @@ public partial class Shop : Control
 		Card2Cost2Label.Visible = IsCard2Available && Card2.CardInfo.StoreCost.Length > 1;
 		Card3Cost1Label.Visible = IsCard3Available && Card3.CardInfo.StoreCost.Length > 0;
 		Card3Cost2Label.Visible = IsCard3Available && Card3.CardInfo.StoreCost.Length > 1;
-		
+
 		Card1Sold.Visible = !IsCard1Available;
 		Card2Sold.Visible = !IsCard2Available;
 		Card3Sold.Visible = !IsCard3Available;
-		
-		if(!IsCard1Available && !IsCard2Available && !IsCard3Available)
+
+		if (!IsCard1Available && !IsCard2Available && !IsCard3Available)
 			ComeBackLabel.Visible = true;
 	}
 
@@ -168,15 +175,15 @@ public partial class Shop : Control
 		Card1Sold.Visible = false;
 		Card2Sold.Visible = false;
 		Card3Sold.Visible = false;
-		
+
 		ComeBackLabel.Visible = false;
 	}
 
 	public void Refill()
 	{
-		if(!IsCard1Available) Card1.SetCard(Cards.GetRandomCard());
-		if(!IsCard2Available) Card2.SetCard(Cards.GetRandomCard());
-		if(!IsCard3Available) Card3.SetCard(Cards.GetRandomCard());
+		if (!IsCard1Available) Card1.SetCard(Cards.GetRandomCard());
+		if (!IsCard2Available) Card2.SetCard(Cards.GetRandomCard());
+		if (!IsCard3Available) Card3.SetCard(Cards.GetRandomCard());
 
 		IsCard1Available = true;
 		IsCard2Available = true;
@@ -218,33 +225,41 @@ public partial class Shop : Control
 
 	void BuyCard(int cardIndex)
 	{
-		if(cardIndex > 2) return;
-		
+		if (cardIndex > 2) return;
+
 		CardShop cardToBuy = cardIndex switch
 		{
 			0 => Card1,
 			1 => Card2,
-			2 => Card3
+			2 => Card3,
+			_ => throw new UnreachableException()
 		};
-		
+
 		//Can afford?
 		for (int i = 0; i < Card1.CardInfo.StoreCost.Length; i++)
 		{
 			ItemType itemType = Card1.CardInfo.StoreCost[i].Type;
 			int costAmount = Card1.CardInfo.StoreCost[i].Amount;
-					
-			if(Storage.Count[itemType] < costAmount) return;
+
+			if (Storage.Count[itemType] < costAmount)
+			{
+				CantBuySound.Play();
+				return;
+			}
 		}
-				
+
 		//If can afford buy and hide card
+
+		BuySound.Play();
+
 		for (int i = 0; i < Card1.CardInfo.StoreCost.Length; i++) //Sta cosa e' un po' demente ma vbb
 		{
 			ItemType itemType = Card1.CardInfo.StoreCost[i].Type;
 			int costAmount = Card1.CardInfo.StoreCost[i].Amount;
 
-			Storage.Count[itemType] -= costAmount;
+			Storage.AddItem(itemType, costAmount);
 		}
-		
+
 		SetCardSlotVisibility(cardIndex, false);
 		CardHand.AddCard(cardToBuy.CardInfo);
 		//Close();
@@ -252,8 +267,7 @@ public partial class Shop : Control
 
 	void SetCardSlotVisibility(int cardIndex, bool isVisible)
 	{
-		
-		switch(cardIndex)
+		switch (cardIndex)
 		{
 			case 0:
 				Card1.Visible = isVisible;
@@ -265,11 +279,11 @@ public partial class Shop : Control
 					Card1Cost2Label.Visible = isVisible;
 					Card1Cost2Image.Visible = isVisible;
 				}
-				
+
 				Card1Sold.Visible = !isVisible;
 				IsCard1Available = isVisible;
 				break;
-			
+
 			case 1:
 				Card2.Visible = isVisible;
 				Card2Cost1Label.Visible = isVisible;
@@ -280,11 +294,11 @@ public partial class Shop : Control
 					Card2Cost2Label.Visible = isVisible;
 					Card2Cost2Image.Visible = isVisible;
 				}
-				
+
 				Card2Sold.Visible = !isVisible;
 				IsCard2Available = isVisible;
 				break;
-			
+
 			case 2:
 				Card3.Visible = isVisible;
 				Card3Cost1Label.Visible = isVisible;
@@ -295,10 +309,10 @@ public partial class Shop : Control
 					Card3Cost2Label.Visible = isVisible;
 					Card3Cost2Image.Visible = isVisible;
 				}
-				
+
 				Card3Sold.Visible = !isVisible;
 				IsCard3Available = isVisible;
 				break;
-		};
+		}
 	}
 }

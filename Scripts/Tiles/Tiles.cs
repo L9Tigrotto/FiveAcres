@@ -170,15 +170,16 @@ file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest
 		else { Data[thisPostion] = cellProbability += ProbabilityIncreaseOnFailure; }
 	}
 
-	public virtual void Click(Vector2I thisPostion, TileGrid grid, Storage storage)
+	public virtual bool TryClick(Vector2I thisPostion, TileGrid grid, Storage storage)
 	{
-		if (!ThisType.CanBeHarvested()) { return; }
+		if (!ThisType.CanBeHarvested()) { return false; }
 
 		int generatedValue = grid.Random.Next(MinHarvest, MaxHarvest + 1);
 		storage.AddItem(ThisType.HarvestType(), generatedValue);
 
 		grid.SetCell(thisPostion, NextType);
 		Data[thisPostion] = 0.0f; // reset the probability for this tile
+		return true;
 	}
 }
 

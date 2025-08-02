@@ -137,4 +137,14 @@ public static class TileTypeExtensions
 			_ => throw new ArgumentException($"TileType {type} cannot be harvested.")
 		};
 	}
+
+	public static bool IsReplaceableByWeed(this TileType type)
+	{
+		return type switch
+		{
+			TileType.Stone => false,
+			TileType.Weed => false,
+			_ => true
+		};
+	}
 }

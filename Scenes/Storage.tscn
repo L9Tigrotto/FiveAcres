@@ -40,9 +40,9 @@ offset = Vector2(24, 16)
 
 [node name="WheatLabel" type="Label" parent="."]
 offset_left = 24.0
-offset_top = 49.0
+offset_top = 52.0
 offset_right = 40.0
-offset_bottom = 60.0
+offset_bottom = 63.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_5gapk")
@@ -55,9 +55,9 @@ offset = Vector2(24, 16)
 
 [node name="RiceLabel" type="Label" parent="."]
 offset_left = 24.0
-offset_top = 65.0
+offset_top = 68.0
 offset_right = 40.0
-offset_bottom = 81.0
+offset_bottom = 84.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -70,9 +70,9 @@ offset = Vector2(24, 16)
 
 [node name="CarrotLabel" type="Label" parent="."]
 offset_left = 69.0
-offset_top = 49.0
+offset_top = 52.0
 offset_right = 85.0
-offset_bottom = 65.0
+offset_bottom = 68.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -85,9 +85,9 @@ offset = Vector2(24, 16)
 
 [node name="PotatoLabel" type="Label" parent="."]
 offset_left = 69.0
-offset_top = 65.0
+offset_top = 68.0
 offset_right = 85.0
-offset_bottom = 81.0
+offset_bottom = 84.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -100,9 +100,9 @@ offset = Vector2(24, 16)
 
 [node name="AppleLabel" type="Label" parent="."]
 offset_left = 24.0
-offset_top = 88.0
+offset_top = 91.0
 offset_right = 40.0
-offset_bottom = 104.0
+offset_bottom = 107.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -115,9 +115,9 @@ offset = Vector2(24, 16)
 
 [node name="CherryLabel" type="Label" parent="."]
 offset_left = 24.0
-offset_top = 104.0
+offset_top = 107.0
 offset_right = 40.0
-offset_bottom = 120.0
+offset_bottom = 123.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -130,9 +130,9 @@ offset = Vector2(24, 16)
 
 [node name="PeachLabel" type="Label" parent="."]
 offset_left = 69.0
-offset_top = 88.0
+offset_top = 91.0
 offset_right = 85.0
-offset_bottom = 104.0
+offset_bottom = 107.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
@@ -145,9 +145,9 @@ offset = Vector2(24, 16)
 
 [node name="PearLabel" type="Label" parent="."]
 offset_left = 69.0
-offset_top = 104.0
+offset_top = 107.0
 offset_right = 85.0
-offset_bottom = 120.0
+offset_bottom = 123.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")

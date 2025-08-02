@@ -31,7 +31,6 @@ public partial class CardShop : Area2D
 		_originalPosition = Position;
 		_originalScale = Scale;
 		
-		GD.Print(_originalScale);
 		//CardArt.Texture = Data.Art;
 		//CardName.Text = Data.Name;
 		//CardDescription.Text = Data.Description;
@@ -47,21 +46,14 @@ public partial class CardShop : Area2D
 		CardDescription.Text = card.Description;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	public override void _MouseShapeEnter(int shapeIdx)
 	{
-		GD.Print("MouseEnter");
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(this, "scale", _originalScale * Vector2.One * 1.25f, 0.2f).SetTrans(Tween.TransitionType.Bounce);
 	}
 	
 	public override void _MouseShapeExit(int shapeIdx)
 	{
-		GD.Print("MouseExit");
 		Tween tween = GetTree().CreateTween();
 		tween.TweenProperty(this, "scale", _originalScale, 0.2f).SetTrans(Tween.TransitionType.Bounce);
 	}

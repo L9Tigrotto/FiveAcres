@@ -5,16 +5,6 @@ using Godot.Collections;
 
 public partial class Storage : Node2D
 {
-	public int WheatCount { get; private set; }
-	public int RiceCount { get; private set; }
-	public int CarrotCount { get; private set; }
-	public int PatatoCount { get; private set; }
-
-	public int AppleCount { get; private set; }
-	public int CherryCount { get; private set; }
-	public int PeachCount { get; private set; }
-	public int PearCount { get; private set; }
-
 	public Dictionary<ItemType, int> Count { get; private set; }
 	
 	private Label WheatLabel { get; set; }
@@ -29,16 +19,6 @@ public partial class Storage : Node2D
 
 	public override void _Ready()
 	{
-		WheatCount = 0;
-		RiceCount = 0;
-		CarrotCount = 0;
-		PatatoCount = 0;
-
-		AppleCount = 0;
-		CherryCount = 0;
-		PeachCount = 0;
-		PearCount = 0;
-
 		WheatLabel = GetNode<Label>("WheatLabel");
 		RiceLabel = GetNode<Label>("RiceLabel");
 		CarrotLabel = GetNode<Label>("CarrotLabel");
@@ -62,17 +42,6 @@ public partial class Storage : Node2D
 			{ ItemType.Peach, 0 },
 			{ ItemType.Pear, 0 },
 		};
-		//Debug additions
-		Count[ItemType.Wheat] = 999;
-		Count[ItemType.Rice] = 999;
-		Count[ItemType.Carrot] = 999;
-		Count[ItemType.Potato] = 999;
-		Count[ItemType.Apple] = 999;
-		Count[ItemType.Cherry] = 999;
-		Count[ItemType.Peach] = 999;
-		Count[ItemType.Apple] = 999;
-		Count[ItemType.Pear] = 999;
-		
 
 		// update text labels with initial counts
 		WheatLabel.Text = $"{Count[ItemType.Wheat]}";
@@ -107,64 +76,48 @@ public partial class Storage : Node2D
 
 	public void AddWheat(int amount)
 	{
-		WheatCount += amount;
-		
 		Count[ItemType.Wheat] += amount;
 		WheatLabel.Text = $"{Count[ItemType.Wheat]}";
 	}
 
 	public void AddRice(int amount)
 	{
-		RiceCount += amount;
-		
 		Count[ItemType.Rice] += amount;
 		RiceLabel.Text = $"{Count[ItemType.Rice]}";
 	}
 
 	public void AddCarrot(int amount)
 	{
-		CarrotCount += amount;
-		
 		Count[ItemType.Carrot] += amount;
 		CarrotLabel.Text = $"{Count[ItemType.Carrot]}";
 	}
 
 	public void AddPotato(int amount)
 	{
-		PatatoCount += amount;
-		
 		Count[ItemType.Potato] += amount;
 		PotatoLabel.Text = $"{Count[ItemType.Potato]}";
 	}
 
 	public void AddApple(int amount)
 	{
-		AppleCount += amount;
-		
 		Count[ItemType.Apple] += amount;
 		AppleLabel.Text = $"{Count[ItemType.Apple]}";
 	}
 
 	public void AddCherry(int amount)
 	{
-		CherryCount += amount;
-		
 		Count[ItemType.Cherry] += amount;
 		CherryLabel.Text = $"{Count[ItemType.Cherry]}";
 	}
 
 	public void AddPeach(int amount)
 	{
-		PeachCount += amount;
-		
 		Count[ItemType.Peach] += amount;
 		PeachLabel.Text = $"{Count[ItemType.Peach]}";
 	}
 
 	public void AddPear(int amount)
 	{
-		PearCount += amount;
-		
 		Count[ItemType.Pear] += amount;
 		PearLabel.Text = $"{Count[ItemType.Pear]}";
 	}

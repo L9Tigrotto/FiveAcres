@@ -24,7 +24,6 @@ public class TileGrid
 		}
 
 		// fill the grid with grass / stone / weed
-
 		FastNoiseLite noise = new()
 		{
 			Offset = new Vector3(
@@ -44,29 +43,27 @@ public class TileGrid
 
 				switch (value)
 				{
-					case < 0.35f: SetCell(postition, TileType.Stone); break;
-					case < 0.50f: SetCell(postition, TileType.Weed); break;
-					default: SetCell(postition, TileType.Grass); break;
+					case < 0.30f: SetCell(postition, TileType.Stone); break;
+					case < 0.47f: SetCell(postition, TileType.Weed); break;
+					case < 0.75f: SetCell(postition, TileType.Grass); break;
+					default: SetCell(postition, TileType.Soil); break;
 				}
 			}
 		}
 
-		// force wheat seed for debug
-		//SetCell(new Vector2I(size.X / 2, size.Y / 2), TileType.EarlyStageWheat);
-
 		// place some trees
-		int numberOfTrees = random.Next(1, 3);
-		for (int i = 0; i < numberOfTrees; i++)
-		{
-			int x = random.Next(0 + 1, size.X - 1);
-			int y = random.Next(0 + 1, size.Y - 1);
-			bool isTreePlantable = Grid[x, y].Type == TileType.Grass;
-
-			if (!isTreePlantable) { continue; }
-
-			TileType treeType = Tiles.EarlyStageTreeTypes[random.Next(0, Tiles.EarlyStageTreeTypes.Length)];
-			SetCell(new Vector2I(x, y), treeType);
-		}
+		//int numberOfTrees = random.Next(1, 3);
+		//for (int i = 0; i < numberOfTrees; i++)
+		//{
+		//	int x = random.Next(0 + 1, size.X - 1);
+		//	int y = random.Next(0 + 1, size.Y - 1);
+		//	bool isTreePlantable = Grid[x, y].Type == TileType.Grass;
+		//
+		//	if (!isTreePlantable) { continue; }
+		//
+		//	TileType treeType = Tiles.EarlyStageTreeTypes[random.Next(0, Tiles.EarlyStageTreeTypes.Length)];
+		//	SetCell(new Vector2I(x, y), treeType);
+		//}
 	}
 
 	public TileGrid(TileGrid previous)

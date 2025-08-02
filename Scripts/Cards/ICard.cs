@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public interface ICard
 {
+	public CardType Type { get; }
+
 	public Texture2D Image { get; }
 	public string Name { get; }
 	public string Description { get; }

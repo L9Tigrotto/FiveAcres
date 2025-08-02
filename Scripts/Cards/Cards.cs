@@ -27,7 +27,7 @@ public static class Cards
 		new PickaxeCard(),
 	];
 
-	public static ICard GetSpecificOrRandomCard(string name)
+	public static ICard GedSpecificOrRandom(string name)
 	{
 		int index = -1;
 		for (int i = 0; i < AllCards.Length; i++)
@@ -40,6 +40,18 @@ public static class Cards
 		return AllCards[index];
 	}
 
+	public static ICard GetRandomPlant()
+	{
+		int index = Random.Shared.Next(0, 3 + 1);
+		return AllCards[index];
+	}
+
+	public static ICard GetRandomTree()
+	{
+		int index = Random.Shared.Next(4, 7 + 1);
+		return AllCards[index];
+	}
+
 	public static ICard GetRandomCard()
 	{
 		int index = Random.Shared.Next(AllCards.Length);
@@ -47,21 +59,11 @@ public static class Cards
 	}
 }
 
-file class EmptyCard() : ICard
-{
-	public Texture2D Image { get; init; } = GD.Load<Texture2D>("res://icon.svg");
-	public string Name { get; init; } = "";
-	public string Description { get; init; } = "";
-
-	public (ItemType Type, int Amount)[] StoreCost { get; init; } = [(ItemType.None, 9999)];
-	public int PlayCost { get; init; } = 99999;
-
-	public int Radius { get; init; } = 0;
-}
-
-file class DefaultReplaceTileCard(string imagePath, string name, string description, (ItemType Type, int Amount)[] storeCost, int playCost,
+file class DefaultReplaceTileCard(CardType type, string imagePath, string name, string description, (ItemType Type, int Amount)[] storeCost, int playCost,
 	int radius, TileType replaceWith, Predicate<TileType> replacePredicate) : ICard
 {
+	public CardType Type { get; init; } = type;
+
 	public Texture2D Image { get; init; } = GD.Load<Texture2D>(imagePath);
 	public string Name { get; init; } = name;
 	public string Description { get; init; } = description;
@@ -78,7 +80,7 @@ file class DefaultReplaceTileCard(string imagePath, string name, string descript
 		{
 			TileType tileType = tileGrid.Grid[position.X, position.Y].Type;
 
-			if (replacePredicate(tileType) || tileType == TileType.Grass)
+			if (replacePredicate(tileType))
 			{
 				affected++;
 				tileGrid.SetCell(position, replaceWith);
@@ -91,66 +93,74 @@ file class DefaultReplaceTileCard(string imagePath, string name, string descript
 
 // plants
 file class PlantWheatCard() : DefaultReplaceTileCard(
+	type: CardType.Plant,
 	imagePath: ItemType.Wheat.ResourceLocation(),
 	name: "Wheat Crop", description: "Plant a wheat crop on soil. \n-Grows at normal rate \n-Small yield",
-	storeCost: [(ItemType.Potato, 15)], playCost: 5,
+	storeCost: [(ItemType.Potato, 15)], playCost: 25,
 	radius: 1,
-	replaceWith: TileType.EarlyStageWheat, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStageWheat, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantRiceCard() : DefaultReplaceTileCard(
+	type: CardType.Plant,
 	imagePath: ItemType.Rice.ResourceLocation(),
 	name: "Rice Crop", description: "Plant a rice crop on soil. \n-Grows very fast \n-Very small yield",
-	storeCost: [(ItemType.Carrot, 15)], playCost: 5,
+	storeCost: [(ItemType.Carrot, 15)], playCost: 25,
 	radius: 1,
-	replaceWith: TileType.EarlyStageRice, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStageRice, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantCarrotCard() : DefaultReplaceTileCard(
+	type: CardType.Plant,
 	imagePath: ItemType.Carrot.ResourceLocation(),
 	name: "Plant Carrot", description: "Plant a carrot on soil. \n-Grows very slowly \n-Very big yield",
-	storeCost: [(ItemType.Wheat, 15)], playCost: 5,
+	storeCost: [(ItemType.Wheat, 15)], playCost: 25,
 	radius: 1,
-	replaceWith: TileType.EarlyStageCarrot, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStageCarrot, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantPotatoCard() : DefaultReplaceTileCard(
+	type: CardType.Plant,
 	imagePath: ItemType.Potato.ResourceLocation(),
 	name: "Plant Potato", description: "Plant a potato on soil. \n-Grows slowly \n-Big yield",
-	storeCost: [(ItemType.Rice, 15)], playCost: 5,
+	storeCost: [(ItemType.Rice, 15)], playCost: 25,
 	radius: 1,
-	replaceWith: TileType.EarlyStagePotato, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStagePotato, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 // trees
 file class PlantAppleTreeCard() : DefaultReplaceTileCard(
+	type: CardType.Tree,
 	imagePath: ItemType.Apple.ResourceLocation(),
 	name: "Apple Tree", description: "It will take at least a generation to grow. Will it be worth?",
-	storeCost: [(ItemType.Peach, 50)], playCost: 5,
+	storeCost: [(ItemType.Peach, 50)], playCost: 60,
 	radius: 1,
-	replaceWith: TileType.EarlyStageAppleTree, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStageAppleTree, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantCherryTreeCard() : DefaultReplaceTileCard(
+	type: CardType.Tree,
 	imagePath: ItemType.Cherry.ResourceLocation(),
 	name: "Cherry Tree", description: "It will take at least a generation to grow. Will it be worth?",
-	storeCost: [(ItemType.Pear, 50)], playCost: 5,
+	storeCost: [(ItemType.Pear, 50)], playCost: 60,
 	radius: 1,
-	replaceWith: TileType.EarlyStageCherryTree, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStageCherryTree, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantPeachTreeCard() : DefaultReplaceTileCard(
+	type: CardType.Tree,
 	imagePath: ItemType.Peach.ResourceLocation(),
 	name: "Peach Tree", description: "It will take at least a generation to grow. Will it be worth?",
-	storeCost: [(ItemType.Cherry, 50)], playCost: 5,
+	storeCost: [(ItemType.Cherry, 50)], playCost: 60,
 	radius: 1,
-	replaceWith: TileType.EarlyStagePeachTree, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStagePeachTree, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 file class PlantPearTreeCard() : DefaultReplaceTileCard(
+	type: CardType.Tree,
 	imagePath: ItemType.Pear.ResourceLocation(),
 	name: "Pear Tree", description: "It will take at least a generation to grow. Will it be worth?",
-	storeCost: [(ItemType.Apple, 50)], playCost: 5,
+	storeCost: [(ItemType.Apple, 50)], playCost: 60,
 	radius: 1,
-	replaceWith: TileType.EarlyStagePearTree, (tileType) => { return tileType == TileType.Soil; });
+	replaceWith: TileType.EarlyStagePearTree, (tileType) => { return tileType == TileType.Soil || tileType == TileType.Grass; });
 
 
-file class Cost2GeneratorCard(string imagePath, string name, string description, int amount1, int amount2, int playCost,
+file class Cost2GeneratorCard(CardType type, string imagePath, string name, string description, int amount1, int amount2, int playCost,
 	int radius, TileType replaceWith, Predicate<TileType> replacePredicate) : DefaultReplaceTileCard(
-	imagePath,
+	type, imagePath,
 	name, description,
 	storeCost: [((ItemType)Random.Shared.Next(1, 8 + 1), amount1), ((ItemType)Random.Shared.Next(1, 8 + 1), amount2)],
 	playCost, radius,
@@ -158,6 +168,7 @@ file class Cost2GeneratorCard(string imagePath, string name, string description,
 
 // weed
 file class RemoveWeed1Card() : Cost2GeneratorCard(
+	type: CardType.Cut,
 	imagePath: "res://Resources/card_arts/scissor.png",
 	name: "Weed Manicure", description: "Destroys all weeds in a 2 tiles radius.",
 	amount1: 20, amount2: 5, playCost: 5,
@@ -165,25 +176,26 @@ file class RemoveWeed1Card() : Cost2GeneratorCard(
 	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Weed);
 
 file class RemoveWeed2Card() : Cost2GeneratorCard(
+	type: CardType.Cut,
 	imagePath: "res://Resources/card_arts/scissor.png",
 	name: "Weed Reaper", description: "Destroys all weeds in a 3 tiles radius.",
-	amount1: 30, amount2: 10, playCost: 5,
+	amount1: 30, amount2: 10, playCost: 10,
 	radius: 2,
 	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Weed);
 
 file class RemoveWeed3Card() : Cost2GeneratorCard(
+	type: CardType.Cut,
 	imagePath: "res://Resources/card_arts/explosiveBarrel.png",
 	name: "Weed Nuker", description: "Destroys all weeds in a 4 tiles radius.",
-	amount1: 40, amount2: 20, playCost: 5,
+	amount1: 40, amount2: 20, playCost: 20,
 	radius: 3,
 	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Weed);
 
 // remove stone
 file class PickaxeCard() : Cost2GeneratorCard(
+	type: CardType.Pickaxe,
 	imagePath: "res://Resources/card_arts/pickaxe.png",
 	name: "Pickaxe", description: "Destroys 1 stone.",
-	amount1: 40, amount2: 20, playCost: 5,
+	amount1: 40, amount2: 20, playCost: 10,
 	radius: 1,
 	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Stone);
-
-// fertilize (grass -> soil)
