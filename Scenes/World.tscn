@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqj7yu1mjappr"]
+[gd_scene load_steps=15 format=3 uid="uid://bqj7yu1mjappr"]
 
 [ext_resource type="Script" uid="uid://cp4wpbl4k5iw1" path="res://Scripts/World.cs" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://cc3pmpn7a3ybn" path="res://Resources/terrain.png" id="2_45d1s"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxdk6mrkp64da" path="res://Scenes/Storage.tscn" id="6_y7y61"]
 [ext_resource type="PackedScene" uid="uid://dejea47savkr3" path="res://Scenes/Shop.tscn" id="7_q2d71"]
 [ext_resource type="PackedScene" uid="uid://dobhntanvkroo" path="res://Scenes/Hand.tscn" id="7_y7y61"]
+[ext_resource type="Texture2D" uid="uid://b5tdxbt7yokcx" path="res://Resources/card_arts/outline.png" id="9_uo7di"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcbcq"]
 texture = ExtResource("2_45d1s")
@@ -433,3 +434,23 @@ CardCurvatureMaxHeight = 5
 [node name="Storage" parent="." instance=ExtResource("6_y7y61")]
 
 [node name="Shop" parent="." instance=ExtResource("7_q2d71")]
+
+[node name="Cursor" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_uo7di")
+draw_center = false
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1

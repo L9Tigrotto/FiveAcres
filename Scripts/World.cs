@@ -2,7 +2,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class World : Node
+public partial class World : Node2D
 {
 	[Export] public Vector2I Size { get; set; }
 
@@ -14,6 +14,7 @@ public partial class World : Node
 	private Label TimeLeftLabel { get; set; }
 	private Shop ShopMenu { get; set; }
 	private CardHand CardHand { get; set; }
+	private NinePatchRect Cursor { get; set; }
 
 	public override void _Ready()
 	{
@@ -34,6 +35,10 @@ public partial class World : Node
 		CardHand = GetNode<CardHand>("CardHand");
 
 		CardHand.AddCard(Cards.GetSpecificOrRandomCard("Weed Manicure"));
+		CardHand.AddCard(Cards.GetSpecificOrRandomCard("Weed Reaper"));
+		CardHand.AddCard(Cards.GetSpecificOrRandomCard("Weed Nuker"));
+
+		Cursor = GetNode<NinePatchRect>("Cursor");
 	}
 
 	private double Elapsed { get; set; } = 0;
@@ -63,14 +68,60 @@ public partial class World : Node
 
 	public override void _Input(InputEvent @event)
 	{
-		if (!@event.IsActionPressed("Click")) { return; }
+		switch (@event)
+		{
+			case InputEventMouseMotion _: HandleMouseMovement(); break;
+			case InputEventMouseButton mouseButtonEvent: HandleMouseClick(mouseButtonEvent); break;
+		}
+	}
 
+	private void HandleMouseMovement()
+	{
+		Vector2 position = GetViewport().GetMousePosition();        // mouse position in viewport coordinates
+		
+		Vector2 tilePosition = position - TileMapLayer.Position;                // mouse position relative to the TileMapLayer
+		tilePosition = tilePosition/ TileMapLayer.TileSet.TileSize;        // convert to tile coordinates
+		
+		bool isInTileSpace = tilePosition.X >= 0 && tilePosition.X < Size.X &&
+		                     tilePosition.Y >= 0 && tilePosition.Y < Size.Y;
+
+		if (!isInTileSpace)
+		{
+			Cursor.Visible = false;
+			return;
+		}
+		
+		Vector2I tileCoordinate = new(Mathf.FloorToInt(tilePosition.X), Mathf.FloorToInt(tilePosition.Y));
+		Vector2 cursorPosition = TileMapLayer.Position + tileCoordinate * TileMapLayer.TileSet.TileSize;
+		
+		Cursor.Visible = true;
+		Cursor.Position = cursorPosition;
+
+		if (CardHand.SelectedCard is not null)
+		{
+			int size = (CardHand.SelectedCard.CardInfo.Radius-1) * 2 + 1;
+
+			Cursor.Size = Vector2.One * size * TileMapLayer.TileSet.TileSize;
+			Cursor.Position = Cursor.Position - (Cursor.Size/2.0f).Ceil() + TileMapLayer.TileSet.TileSize/2;
+			Cursor.Modulate = Colors.Black;
+		}
+		else
+		{
+			Cursor.Size = Vector2.One* TileMapLayer.TileSet.TileSize;
+			Cursor.Modulate = Colors.White;
+		}
+	}
+
+	private void HandleMouseClick(InputEventMouseButton mouseButtonEvent)
+	{
+		if(!mouseButtonEvent.IsActionPressed("Click")) { return; }
+		
 		Vector2 position = GetViewport().GetMousePosition();        // mouse position in viewport coordinates
 		position = position - TileMapLayer.Position;                // mouse position relative to the TileMapLayer
 		position = position / TileMapLayer.TileSet.TileSize;        // convert to tile coordinates
 
 		bool isInTileSpace = position.X >= 0 && position.X < Size.X &&
-			position.Y >= 0 && position.Y < Size.Y;
+		                     position.Y >= 0 && position.Y < Size.Y;
 
 		if (!isInTileSpace) { return; } // managed by other scripts
 
@@ -97,7 +148,7 @@ public partial class World : Node
 
 					// check for point validity
 					if (targetTile.X < 0 || targetTile.X >= Size.X ||
-						targetTile.Y < 0 || targetTile.Y >= Size.Y) { continue; }
+					    targetTile.Y < 0 || targetTile.Y >= Size.Y) { continue; }
 
 					if (targetTile.DistanceTo(tileCoordinate) < cardInfo.Radius)
 					{

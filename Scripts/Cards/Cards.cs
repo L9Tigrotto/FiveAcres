@@ -22,6 +22,9 @@ public static class Cards
 		new RemoveWeed1Card(),
 		new RemoveWeed2Card(),
 		new RemoveWeed3Card(),
+		
+		// utilities
+		new PickaxeCard(),
 	];
 
 	public static ICard GetSpecificOrRandomCard(string name)
@@ -179,5 +182,11 @@ file class RemoveWeed3Card() : Cost2GeneratorCard(
 	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Weed);
 
 // remove stone
+file class PickaxeCard() : Cost2GeneratorCard(
+	imagePath: "res://Resources/card_arts/pickaxe.png",
+	name: "Pickaxe", description: "Destroys 1 stone.",
+	amount1: 40, amount2: 20, playCost: 5,
+	radius: 1,
+	replaceWith: TileType.Grass, (tileType) => tileType == TileType.Stone);
 
 // fertilize (grass -> soil)
