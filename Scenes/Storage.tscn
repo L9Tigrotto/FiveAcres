@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxdk6mrkp64da"]
+[gd_scene load_steps=13 format=3 uid="uid://bxdk6mrkp64da"]
 
 [ext_resource type="Script" uid="uid://b3pd0irkf4na6" path="res://Scripts/Storage.cs" id="1_tvprw"]
 [ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="2_ffo6q"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://be22nk5sb0782" path="res://Resources/card_arts/cherry.png" id="8_5ekqi"]
 [ext_resource type="Texture2D" uid="uid://bhc7yq7sh21x6" path="res://Resources/card_arts/peach.png" id="9_jbl7f"]
 [ext_resource type="Texture2D" uid="uid://dcm5n8q36o2cj" path="res://Resources/card_arts/pear.png" id="10_j73so"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gapk"]
+font = ExtResource("3_clmel")
+font_size = 12
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i5cya"]
 font = ExtResource("3_clmel")
@@ -36,10 +42,10 @@ offset = Vector2(24, 16)
 offset_left = 24.0
 offset_top = 49.0
 offset_right = 40.0
-offset_bottom = 65.0
+offset_bottom = 60.0
 pivot_offset = Vector2(0, 12)
 text = "99"
-label_settings = SubResource("LabelSettings_i5cya")
+label_settings = SubResource("LabelSettings_5gapk")
 
 [node name="RiceSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 65)

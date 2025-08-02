@@ -43,8 +43,6 @@ public static class Cards
 	public static ICard GetRandomCard()
 	{
 		int index = Random.Shared.Next(AllCards.Length);
-
-		GD.Print($"Card found at index {index}");
 		return AllCards[index];
 	}
 }
@@ -75,7 +73,6 @@ file class DefaultReplaceTileCard(string imagePath, string name, string descript
 
 	public bool Use(List<Vector2I> areaOfEffect, TileGrid tileGrid)
 	{
-		GD.Print($"Using card: {Name} with radius {Radius} on {areaOfEffect.Count} tiles.");
 		int affected = 0;
 		foreach (Vector2I position in areaOfEffect)
 		{

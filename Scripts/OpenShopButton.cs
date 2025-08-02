@@ -12,7 +12,6 @@ public partial class OpenShopButton : Button
 
 	public override void _Pressed()
 	{
-		GD.Print("Shop opened");
 		Shop.Open();
 	}
 }

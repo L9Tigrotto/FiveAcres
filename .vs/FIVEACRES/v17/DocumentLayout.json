@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "E:\\Code\\Projects\\fiveacres\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\cards\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\cards\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\cards\\itemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\cards\\itemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,66 +39,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "World.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
-              "RelativeDocumentMoniker": "Scripts\\World.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
-              "RelativeToolTip": "Scripts\\World.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBUAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T08:03:45.01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Card.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Card.cs",
-              "RelativeDocumentMoniker": "Scripts\\Card.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Card.cs",
-              "RelativeToolTip": "Scripts\\Card.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T07:58:03.597Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Shop.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Shop.cs",
-              "RelativeDocumentMoniker": "Scripts\\Shop.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Shop.cs",
-              "RelativeToolTip": "Scripts\\Shop.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswBsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T07:55:25.581Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Cards.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Cards\\Cards.cs",
               "RelativeDocumentMoniker": "Scripts\\Cards\\Cards.cs",
               "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Cards\\Cards.cs",
               "RelativeToolTip": "Scripts\\Cards\\Cards.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAA2wEoAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T07:46:43.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ItemType.cs",
-              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Cards\\ItemType.cs",
-              "RelativeDocumentMoniker": "Scripts\\Cards\\ItemType.cs",
-              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Cards\\ItemType.cs",
-              "RelativeToolTip": "Scripts\\Cards\\ItemType.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAxwBkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T07:43:58.793Z",
+              "WhenOpened": "2025-08-02T10:27:18.842Z",
               "EditorCaption": ""
             }
           ]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dejea47savkr3"]
+[gd_scene load_steps=11 format=3 uid="uid://dejea47savkr3"]
 
 [ext_resource type="Script" uid="uid://bebymdor2nq4x" path="res://Scripts/Shop.cs" id="1_kjfcx"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_iidq5"]
@@ -6,12 +6,19 @@
 [ext_resource type="Script" uid="uid://tlsfb5mx7vm8" path="res://Scripts/CloseShopButton.cs" id="4_i4qx4"]
 [ext_resource type="Shader" uid="uid://bdua2u303f2p3" path="res://Scripts/Shaders/Shop.gdshader" id="4_wndna"]
 [ext_resource type="PackedScene" uid="uid://k1x11amoy215" path="res://Scenes/Card.tscn" id="5_e5ji4"]
+[ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="7_ckylj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckylj"]
 shader = ExtResource("4_wndna")
 shader_parameter/blur = 2.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wndna"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2aaoe"]
+font = ExtResource("2_iidq5")
+font_size = 12
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -68,3 +75,99 @@ scale = Vector2(1.7, 1.7)
 visible = false
 position = Vector2(360, 232)
 scale = Vector2(1.7, 1.7)
+
+[node name="Card1Cost1Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(91, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card1Cost2Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(91, 264)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card2Cost1Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(211, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card2Cost2Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(211, 264)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card3Cost1Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(339, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card3Cost2Image" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(339, 264)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ckylj")
+
+[node name="Card1Cost1Label" type="Label" parent="."]
+visible = false
+offset_left = 103.0
+offset_top = 243.0
+offset_right = 119.0
+offset_bottom = 254.0
+pivot_offset = Vector2(1, 6)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="Card1Cost2Label" type="Label" parent="."]
+visible = false
+offset_left = 103.0
+offset_top = 258.0
+offset_right = 119.0
+offset_bottom = 269.0
+pivot_offset = Vector2(0, 12)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="Card2Cost1Label" type="Label" parent="."]
+visible = false
+offset_left = 223.0
+offset_top = 243.0
+offset_right = 239.0
+offset_bottom = 254.0
+pivot_offset = Vector2(0, 12)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="Card2Cost2Label" type="Label" parent="."]
+visible = false
+offset_left = 223.0
+offset_top = 258.0
+offset_right = 239.0
+offset_bottom = 269.0
+pivot_offset = Vector2(0, 12)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="Card3Cost1Label" type="Label" parent="."]
+visible = false
+offset_left = 352.0
+offset_top = 243.0
+offset_right = 368.0
+offset_bottom = 254.0
+pivot_offset = Vector2(0, 12)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
+
+[node name="Card3Cost2Label" type="Label" parent="."]
+visible = false
+offset_left = 352.0
+offset_top = 258.0
+offset_right = 368.0
+offset_bottom = 269.0
+pivot_offset = Vector2(0, 12)
+text = "99"
+label_settings = SubResource("LabelSettings_2aaoe")
