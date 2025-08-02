@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class Card : Area2D
+public partial class CardShop : Area2D
 {
 	//[Export] public CardBaseData Data { get; set; }
 
 	public ICard CardInfo { get; set; }
+	[Export] public int CardIndex { get; set; }
 
 	Sprite2D CardBg { get; set; }
 	Sprite2D CardArt { get; set; }
@@ -13,11 +14,11 @@ public partial class Card : Area2D
 	Label CardName { get; set; }
 	Label CardDescription { get; set; }
 	
+	
 	[Signal]
-	public delegate void CardSelectedEventHandler(Card card);
+	public delegate void CardSelectedEventHandler(int cardIndex);
 	Vector2 _originalPosition;
 	Vector2 _originalScale;
-	bool _isSelected;
 
 	public override void _Ready()
 	{
@@ -27,9 +28,10 @@ public partial class Card : Area2D
 		CardName = GetNode<Label>("Card_Bg/Card_Name");
 		CardDescription = GetNode<Label>("Card_Bg/Card_Desc");
 		
-		_originalPosition = CardBg.Position;
-		_originalScale = CardBg.Scale;
+		_originalPosition = Position;
+		_originalScale = Scale;
 		
+		GD.Print(_originalScale);
 		//CardArt.Texture = Data.Art;
 		//CardName.Text = Data.Name;
 		//CardDescription.Text = Data.Description;
@@ -49,32 +51,24 @@ public partial class Card : Area2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public override void _MouseShapeEnter(int shapeIdx)
+	{
+		GD.Print("MouseEnter");
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(this, "scale", _originalScale * Vector2.One * 1.25f, 0.2f).SetTrans(Tween.TransitionType.Bounce);
+	}
 	
+	public override void _MouseShapeExit(int shapeIdx)
+	{
+		GD.Print("MouseExit");
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(this, "scale", _originalScale, 0.2f).SetTrans(Tween.TransitionType.Bounce);
+	}
+
 	public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
 	{
 		if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
-			ToggleSelection();
-	}
-	
-	public void ToggleSelection()
-	{
-		if (_isSelected)
-		{
-			CardBg.ZIndex = 0;
-			CardBg.Position = _originalPosition;
-			CardBg.Scale = _originalScale;
-			_isSelected = false;
-		}
-		else
-		{
-			_originalPosition = CardBg.Position;
-			
-			CardBg.ZIndex = 1;
-			CardBg.Position = new Vector2(0, -(CardBg.Texture.GetHeight()));
-			CardBg.Scale = _originalScale * new Vector2(1.25f, 1.25f);
-			_isSelected = true;
-		}
-			
-		EmitSignal(SignalName.CardSelected, this);
+			EmitSignal(SignalName.CardSelected, CardIndex);
 	}
 }

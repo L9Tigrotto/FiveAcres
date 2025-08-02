@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://k1x11amoy215"]
+[gd_scene load_steps=10 format=3 uid="uid://bc5r25wmyucms"]
 
-[ext_resource type="Texture2D" uid="uid://rsjv5528qrkk" path="res://Resources/card_bg.png" id="1_3p273"]
-[ext_resource type="Script" uid="uid://dgqd2n7nuuny3" path="res://Scripts/Card.cs" id="1_kphy1"]
-[ext_resource type="Texture2D" uid="uid://bxpuxdqao8ysn" path="res://Resources/card_arts/explosiveBarrel.png" id="2_3m7nw"]
-[ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_h8wm0"]
-[ext_resource type="Texture2D" uid="uid://ddmx6ss7n5j8l" path="res://Resources/circle.png" id="4_kphy1"]
+[ext_resource type="Script" uid="uid://balo1hap3kf1s" path="res://Scripts/CardShop.cs" id="1_vi4mt"]
+[ext_resource type="Texture2D" uid="uid://rsjv5528qrkk" path="res://Resources/card_bg.png" id="2_lle05"]
+[ext_resource type="Texture2D" uid="uid://bxpuxdqao8ysn" path="res://Resources/card_arts/explosiveBarrel.png" id="3_e4taa"]
+[ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="4_f4l8s"]
+[ext_resource type="Texture2D" uid="uid://ddmx6ss7n5j8l" path="res://Resources/circle.png" id="4_lle05"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m7nw"]
 line_spacing = 0.0
-font = ExtResource("2_h8wm0")
+font = ExtResource("4_f4l8s")
 font_size = 32
 font_color = Color(0.619664, 0.746456, 0.502776, 1)
 outline_size = 7
@@ -16,13 +16,13 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kphy1"]
 line_spacing = -2.0
-font = ExtResource("2_h8wm0")
+font = ExtResource("4_f4l8s")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wejov"]
-font = ExtResource("2_h8wm0")
+font = ExtResource("4_f4l8s")
 font_size = 18
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kphy1"]
@@ -30,20 +30,20 @@ size = Vector2(42.2438, 57.7527)
 
 [node name="Card" type="Area2D"]
 scale = Vector2(1.2, 1.2)
-script = ExtResource("1_kphy1")
+script = ExtResource("1_vi4mt")
 
 [node name="Card_Bg" type="Sprite2D" parent="."]
 position = Vector2(0, -27)
-texture = ExtResource("1_3p273")
+texture = ExtResource("2_lle05")
 
 [node name="Card_Art" type="Sprite2D" parent="Card_Bg"]
 position = Vector2(0, -14)
-texture = ExtResource("2_3m7nw")
+texture = ExtResource("3_e4taa")
 
 [node name="Card_Circle" type="Sprite2D" parent="Card_Bg"]
 position = Vector2(-23.3333, -29.6667)
 scale = Vector2(0.707603, 0.707603)
-texture = ExtResource("4_kphy1")
+texture = ExtResource("4_lle05")
 
 [node name="Card_Name" type="Label" parent="Card_Bg"]
 texture_filter = 1
@@ -58,9 +58,9 @@ horizontal_alignment = 1
 
 [node name="Card_Desc" type="Label" parent="Card_Bg"]
 texture_filter = 1
-offset_left = -18.0
+offset_left = -19.0
 offset_top = 7.0
-offset_right = 177.0
+offset_right = 188.0
 offset_bottom = 110.0
 scale = Vector2(0.184, 0.185)
 text = "+1 energy
@@ -72,9 +72,9 @@ clip_text = true
 
 [node name="Card_Cost" type="Label" parent="Card_Bg"]
 offset_left = -28.3333
-offset_top = -34.6667
+offset_top = -35.5
 offset_right = -6.33333
-offset_bottom = -11.6667
+offset_bottom = -12.5
 scale = Vector2(0.43, 0.43)
 text = "10"
 label_settings = SubResource("LabelSettings_wejov")
@@ -84,6 +84,6 @@ vertical_alignment = 1
 [node name="CardPivot" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -27)
+position = Vector2(0, -26.6667)
 rotation = -0.00299437
 shape = SubResource("RectangleShape2D_kphy1")

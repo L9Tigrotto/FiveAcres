@@ -39,6 +39,7 @@ public partial class World : Node2D
 		CardHand.AddCard(Cards.GetSpecificOrRandomCard("Weed Nuker"));
 
 		Cursor = GetNode<NinePatchRect>("Cursor");
+		
 	}
 
 	private double Elapsed { get; set; } = 0;
@@ -68,6 +69,7 @@ public partial class World : Node2D
 
 	public override void _Input(InputEvent @event)
 	{
+		if (ShopMenu.IsOpen) { return; }
 		switch (@event)
 		{
 			case InputEventMouseMotion _: HandleMouseMovement(); break;
@@ -103,7 +105,7 @@ public partial class World : Node2D
 
 			Cursor.Size = Vector2.One * size * TileMapLayer.TileSet.TileSize;
 			Cursor.Position = Cursor.Position - (Cursor.Size/2.0f).Ceil() + TileMapLayer.TileSet.TileSize/2;
-			Cursor.Modulate = Colors.Black;
+			Cursor.Modulate = Colors.OrangeRed;
 		}
 		else
 		{
