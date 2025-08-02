@@ -396,8 +396,8 @@ Size = Vector2i(16, 16)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -100
-offset_right = 486.0
-offset_bottom = 274.0
+offset_right = 480.0
+offset_bottom = 360.0
 texture = ExtResource("2_q2d71")
 stretch_mode = 1
 
@@ -426,7 +426,7 @@ text = "↳ -1 seconds"
 label_settings = SubResource("LabelSettings_p70al")
 
 [node name="CardHand" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(40, 264)
+position = Vector2(40, 352)
 CardSize = 48
 CardCurvatureMaxHeight = 5
 

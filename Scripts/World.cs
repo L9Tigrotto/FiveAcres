@@ -19,8 +19,7 @@ public partial class World : Node
 	{
 		TileMapLayer = GetNode<TileMapLayer>("TileMapLayer");
 		TileMapLayer.Transform = new Transform2D(0, new(
-			GetViewport().GetVisibleRect().Size.X / 3,
-			GetViewport().GetVisibleRect().Size.Y / 2 - Size.Y * TileMapLayer.TileSet.TileSize.Y / 2));
+			GetViewport().GetVisibleRect().Size.X / 3, TileMapLayer.TileSet.TileSize.Y));
 
 		Storage storage = GetNode<Storage>("Storage");
 		Generations = [new(Size, TileMapLayer, storage, 60 * 5)];
@@ -44,10 +43,10 @@ public partial class World : Node
 
 		if (CurrentGeneration.IsEnded)
 		{
-			Generation nextGeneration = CurrentGeneration.Advance();
-			Generations.Add(nextGeneration);
+			Generations.Add(CurrentGeneration.Advance());
 			UpdateGenerationLabel();
 
+			ShopMenu.Refill();
 			// TODO: deal cards
 			return;
 		}

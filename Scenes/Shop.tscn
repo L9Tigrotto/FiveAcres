@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dejea47savkr3"]
+[gd_scene load_steps=9 format=3 uid="uid://dejea47savkr3"]
 
 [ext_resource type="Script" uid="uid://bebymdor2nq4x" path="res://Scripts/Shop.cs" id="1_kjfcx"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_iidq5"]
 [ext_resource type="Script" uid="uid://b0rq5dx4vxnrs" path="res://Scripts/OpenShopButton.cs" id="3_lagin"]
 [ext_resource type="Script" uid="uid://tlsfb5mx7vm8" path="res://Scripts/CloseShopButton.cs" id="4_i4qx4"]
+[ext_resource type="Shader" uid="uid://bdua2u303f2p3" path="res://Scripts/Shaders/Shop.gdshader" id="4_wndna"]
+[ext_resource type="PackedScene" uid="uid://k1x11amoy215" path="res://Scenes/Card.tscn" id="5_e5ji4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckylj"]
+shader = ExtResource("4_wndna")
+shader_parameter/blur = 2.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wndna"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -26,15 +34,16 @@ theme_override_font_sizes/font_size = 12
 text = "Shop"
 script = ExtResource("3_lagin")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_ckylj")
 layout_mode = 0
-offset_top = -8.0
 offset_right = 480.0
-offset_bottom = 264.0
-color = Color(1, 1, 1, 0.25098)
+offset_bottom = 360.0
+texture = SubResource("PlaceholderTexture2D_wndna")
 
 [node name="CloseShopButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 464.0
 offset_right = 479.0
@@ -44,3 +53,18 @@ theme_override_fonts/font = ExtResource("2_iidq5")
 theme_override_font_sizes/font_size = 12
 text = "X"
 script = ExtResource("4_i4qx4")
+
+[node name="Card1" parent="." instance=ExtResource("5_e5ji4")]
+visible = false
+position = Vector2(112, 232)
+scale = Vector2(1.7, 1.7)
+
+[node name="Card2" parent="." instance=ExtResource("5_e5ji4")]
+visible = false
+position = Vector2(232, 232)
+scale = Vector2(1.7, 1.7)
+
+[node name="Card3" parent="." instance=ExtResource("5_e5ji4")]
+visible = false
+position = Vector2(360, 232)
+scale = Vector2(1.7, 1.7)
