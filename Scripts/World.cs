@@ -45,12 +45,12 @@ public partial class World : Node2D
 		CardHand = GetNode<CardHand>("CardHand");
 
 		// Add some initial cards to the CardHand
+		CardHand.AddCard(Cards.GetRandomCard());
 		CardHand.AddCard(Cards.GetRandomPlant());
 		CardHand.AddCard(Cards.GetRandomTree());
-		CardHand.AddCard(Cards.GedSpecificOrRandom("Weed Manicure"));
-		CardHand.AddCard(Cards.GetRandomCard());
-		CardHand.AddCard(Cards.GetRandomCard());
-
+		CardHand.AddCard(Cards.GedSpecificOrRandom("Weed Nuker"));
+		CardHand.AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		
 		Cursor = GetNode<NinePatchRect>("Cursor");
 
 		HarvestSound = GetNode<RandomPitchAudioStream>("HarvestSound");
@@ -80,6 +80,7 @@ public partial class World : Node2D
 				ShopMenu.Refill();
 				for (int i = CardHand.CardCount; i < 3; i++) { CardHand.AddCard(Cards.GetRandomCard()); }
 			};
+			
 
 			return;
 		}
