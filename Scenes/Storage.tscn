@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxdk6mrkp64da"]
+[gd_scene load_steps=14 format=3 uid="uid://bxdk6mrkp64da"]
 
 [ext_resource type="Script" uid="uid://b3pd0irkf4na6" path="res://Scripts/Storage.cs" id="1_tvprw"]
+[ext_resource type="Texture2D" uid="uid://dreglt5u7dilh" path="res://Resources/9peace.png" id="2_51lpn"]
 [ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="2_ffo6q"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="3_clmel"]
 [ext_resource type="Texture2D" uid="uid://blkap24p4xp7s" path="res://Resources/card_arts/rice.png" id="4_5gapk"]
@@ -26,127 +27,134 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Storage" type="Node2D"]
 script = ExtResource("1_tvprw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="NinePatchRect" parent="."]
 offset_top = 46.0
-offset_right = 91.0
-offset_bottom = 123.0
-color = Color(0, 0, 0, 0.4)
+offset_right = 47.0
+offset_bottom = 86.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_51lpn")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="WheatSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 49)
+position = Vector2(2, 49)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ffo6q")
 offset = Vector2(24, 16)
 
 [node name="WheatLabel" type="Label" parent="."]
-offset_left = 24.0
+offset_left = 26.0
 offset_top = 52.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = 63.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_5gapk")
 
 [node name="RiceSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 65)
+position = Vector2(2, 65)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_5gapk")
 offset = Vector2(24, 16)
 
 [node name="RiceLabel" type="Label" parent="."]
-offset_left = 24.0
+offset_left = 26.0
 offset_top = 68.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = 84.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="CarrotSprite" type="Sprite2D" parent="."]
-position = Vector2(45, 49)
+position = Vector2(47, 49)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_ffo6q")
 offset = Vector2(24, 16)
 
 [node name="CarrotLabel" type="Label" parent="."]
-offset_left = 69.0
+offset_left = 71.0
 offset_top = 52.0
-offset_right = 85.0
+offset_right = 87.0
 offset_bottom = 68.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="PotatoSprite" type="Sprite2D" parent="."]
-position = Vector2(45, 65)
+position = Vector2(47, 65)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_51lpn")
 offset = Vector2(24, 16)
 
 [node name="PotatoLabel" type="Label" parent="."]
-offset_left = 69.0
+offset_left = 71.0
 offset_top = 68.0
-offset_right = 85.0
+offset_right = 87.0
 offset_bottom = 84.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="AppleSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 88)
+position = Vector2(2, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_7nwa1")
 offset = Vector2(24, 16)
 
 [node name="AppleLabel" type="Label" parent="."]
-offset_left = 24.0
+offset_left = 26.0
 offset_top = 91.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = 107.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="CherrySprite" type="Sprite2D" parent="."]
-position = Vector2(0, 104)
+position = Vector2(2, 104)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_5ekqi")
 offset = Vector2(24, 16)
 
 [node name="CherryLabel" type="Label" parent="."]
-offset_left = 24.0
+offset_left = 26.0
 offset_top = 107.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = 123.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="PeachSprite" type="Sprite2D" parent="."]
-position = Vector2(45, 88)
+position = Vector2(47, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_jbl7f")
 offset = Vector2(24, 16)
 
 [node name="PeachLabel" type="Label" parent="."]
-offset_left = 69.0
+offset_left = 71.0
 offset_top = 91.0
-offset_right = 85.0
+offset_right = 87.0
 offset_bottom = 107.0
 pivot_offset = Vector2(0, 12)
 text = "99"
 label_settings = SubResource("LabelSettings_i5cya")
 
 [node name="PearSprite" type="Sprite2D" parent="."]
-position = Vector2(45, 104)
+position = Vector2(47, 104)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_j73so")
 offset = Vector2(24, 16)
 
 [node name="PearLabel" type="Label" parent="."]
-offset_left = 69.0
+offset_left = 71.0
 offset_top = 107.0
-offset_right = 85.0
+offset_right = 87.0
 offset_bottom = 123.0
 pivot_offset = Vector2(0, 12)
 text = "99"
