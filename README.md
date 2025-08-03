@@ -28,48 +28,4 @@ Dont get surrounded by the weeds which will take up precious space that could  b
 
 ## Credits
 
-Additional assets where used:
-
-```
-Ambient sound:
- - Selkirkshire Nature Ambience
- - BurghRecords
- - https://freesound.org/people/BurghRecords/sounds/506838/
-
-Card Pick
- - beer can pick up from street 009 241126_0952
- - klankbeeld
- - https://freesound.org/people/klankbeeld/sounds/771781/
-
-Successful Card Buy
- - cha ching
- - creek23
- - https://freesound.org/people/creek23/sounds/75235/
-
-Unsuccessful Card Buy
- - Beaty Slicey buzzy
- - johnnypanic
- - https://freesound.org/people/johnnypanic/sounds/510018/
-
-Harvest
- - Plant_Harvest_03
- - Valenspire
- - https://freesound.org/people/Valenspire/sounds/699492/
-
-Weed Cut
- - Scissors open
- - decacis
- - https://freesound.org/people/decacis/sounds/745710/
-
-Stone Break
- - Sonniss.com - GDC 2020 - Game Audio Bundle/Tatak Audio - Rocks and Debris/Tatak_ROCKS_Single Rock Impact on Stones.wav
-
-Death bell
- - Church Clock Strikes 1
- - JarredGibb
- - https://freesound.org/people/JarredGibb/sounds/219047/
- 
-Additional pixel-art
-    -https://ninjikin.itch.io/grass @SciGho
-    -https://otterisk.itch.io/hana-caraka-farming-foraging @Otterisk
-```
+Additional assets where used: see [CREDITS](CREDITS)
