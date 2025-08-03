@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://knqh2fubxu0v"]
+
+[ext_resource type="Script" uid="uid://b5rxbk3kg0yxc" path="res://Scripts/TimeLoss.cs" id="1_xto5h"]
+[ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_2v7kn"]
+[ext_resource type="Texture2D" uid="uid://db3tc476s0ftn" path="res://Resources/clock.png" id="3_xto5h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bo5re"]
+font = ExtResource("2_2v7kn")
+font_color = Color(0.958801, 0.240018, 0.26351, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TimeLoss" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_xto5h")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 27.0
+offset_bottom = 15.0
+text = "-99"
+label_settings = SubResource("LabelSettings_bo5re")
+
+[node name="TimeImage" type="Sprite2D" parent="."]
+position = Vector2(46.6667, 9.33333)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_xto5h")

@@ -6,6 +6,7 @@ using System.Diagnostics;
 public partial class World : Node2D
 {
 	[Export] public Vector2I Size { get; set; }
+	[Export] public PackedScene TimeLossScene { get; set; }
 
 	private List<Generation> Generations { get; set; }
 	public Generation CurrentGeneration { get { return Generations[^1]; } }
@@ -184,6 +185,11 @@ public partial class World : Node2D
 				case CardType.Pickaxe: PickaxeSound.Play(); break;
 				default: throw new UnreachableException();
 			}
+
+			TimeLoss instance = TimeLossScene.Instantiate<TimeLoss>();
+			AddChild(instance);
+			instance.Update(cardInfo.PlayCost, GetViewport().GetMousePosition() + Vector2.Up * 5);
+
 			CardHand.RemoveSelectedCard();
 			CurrentGeneration.ElapsedSeconds += cardInfo.PlayCost;
 			UpdateTimeLeftLabel();

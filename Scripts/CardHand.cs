@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using Godot.Collections;
 
 public partial class CardHand : Node2D
@@ -22,13 +21,6 @@ public partial class CardHand : Node2D
 	public override void _Ready()
 	{
 		PickSound = GetNode<RandomPitchAudioStream>("PickSound");
-		
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
-		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
 	}
 
 	public override void _Process(double delta)
@@ -39,13 +31,12 @@ public partial class CardHand : Node2D
 	public void AddCard(ICard card)
 	{
 		Card newCard = CardScene.Instantiate<Card>();
+		AddChild(newCard);
 		newCard.Position = Vector2.Down * CardSize;
-		newCard._Ready();
 		newCard.SetCard(card);
 
 		//Add card to cards in hand
 		CardsInHand.Add(newCard);
-		AddChild(newCard);
 
 		newCard.CardSelected += OnCardClicked;
 
