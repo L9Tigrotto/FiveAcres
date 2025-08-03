@@ -29,6 +29,13 @@ Dont get surrounded by the weeds which will take up precious space that could  b
 
 ---
 
+## Install instructions
+Unzip and run FiveAcres.exe
+
+Only Windows build was tested.
+
+---
+
 ## Credits
 
 Additional assets where used: see [CREDITS](CREDITS)
