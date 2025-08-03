@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Code\\Projects\\fiveacres\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\cards\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\cards\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +50,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "World.cs",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
+              "RelativeDocumentMoniker": "Scripts\\World.cs",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
+              "RelativeToolTip": "Scripts\\World.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T15:44:01.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Tiles.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Tiles\\Tiles.cs",
               "RelativeDocumentMoniker": "Scripts\\Tiles\\Tiles.cs",
@@ -54,12 +71,11 @@
               "RelativeToolTip": "Scripts\\Tiles\\Tiles.cs",
               "ViewState": "AgIAAK8AAAAAAAAAAAAqwLsAAABxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T15:15:14.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-03T15:15:14.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Cards.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Cards\\Cards.cs",
               "RelativeDocumentMoniker": "Scripts\\Cards\\Cards.cs",
@@ -72,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Generation.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Generation.cs",
               "RelativeDocumentMoniker": "Scripts\\Generation.cs",
@@ -80,8 +96,7 @@
               "RelativeToolTip": "Scripts\\Generation.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAAwEEAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T15:02:22.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-03T15:02:22.633Z"
             }
           ]
         }
