@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "E:\\Code\\Projects\\fiveacres\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\timeloss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\timeloss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\farmer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\farmer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\death.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\death.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\credits||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:credits||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|e:\\code\\projects\\fiveacres\\scripts\\timeloss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC857CB6-48FD-4BFA-83D4-8480DEB976F1}|FiveAcres.csproj|solutionrelative:scripts\\timeloss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,26 +54,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Death.cs",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Death.cs",
+              "RelativeDocumentMoniker": "Scripts\\Death.cs",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Death.cs",
+              "RelativeToolTip": "Scripts\\Death.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAwBwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T14:29:39.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Credits",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Credits",
+              "RelativeDocumentMoniker": "Credits",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Credits",
+              "RelativeToolTip": "Credits",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-03T14:18:50.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Farmer.cs",
+              "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\Farmer.cs",
+              "RelativeDocumentMoniker": "Scripts\\Farmer.cs",
+              "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\Farmer.cs",
+              "RelativeToolTip": "Scripts\\Farmer.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIA/wCgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T13:48:27.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TimeLoss.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\TimeLoss.cs",
               "RelativeDocumentMoniker": "Scripts\\TimeLoss.cs",
               "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\TimeLoss.cs",
               "RelativeToolTip": "Scripts\\TimeLoss.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBcAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAABBwBcAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T09:01:50.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-03T09:01:50.51Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "World.cs",
               "DocumentMoniker": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeDocumentMoniker": "Scripts\\World.cs",
               "ToolTip": "E:\\Code\\Projects\\fiveacres\\Scripts\\World.cs",
               "RelativeToolTip": "Scripts\\World.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAA6wL4AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwv1kAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-02T18:26:33.441Z",
               "EditorCaption": ""

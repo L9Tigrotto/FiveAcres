@@ -18,9 +18,13 @@ public partial class World : Node2D
 	private CardHand CardHand { get; set; }
 	private NinePatchRect Cursor { get; set; }
 
-	public RandomPitchAudioStream HarvestSound { get; set; }
-	public RandomPitchAudioStream SnipSound { get; set; }
-	public RandomPitchAudioStream PickaxeSound { get; set; }
+	private RandomPitchAudioStream HarvestSound { get; set; }
+	private RandomPitchAudioStream SnipSound { get; set; }
+	private RandomPitchAudioStream PickaxeSound { get; set; }
+
+	private Farmer Farmer { get; set; }
+
+	public Death DeathScreen { get; set; }
 
 	public override void _Ready()
 	{
@@ -52,26 +56,46 @@ public partial class World : Node2D
 		HarvestSound = GetNode<RandomPitchAudioStream>("HarvestSound");
 		SnipSound = GetNode<RandomPitchAudioStream>("SnipSound");
 		PickaxeSound = GetNode<RandomPitchAudioStream>("PickaxeSound");
+
+		Farmer = GetNode<Farmer>("Farmer");
+
+		DeathScreen = GetNode<Death>("DeathScreen");
 	}
 
 	private double Elapsed { get; set; } = 0;
 	public override void _Process(double delta)
 	{
-		if (ShopMenu.IsOpen) { return; }
+		if (ShopMenu.IsOpen || DeathScreen.IsOpen) { return; }
 
 		if (CurrentGeneration.IsEnded)
 		{
-			Generations.Add(new(CurrentGeneration));
-			UpdateGenerationLabel();
+			Color oldColor = Farmer.Color;
+			Farmer.RerollColor();
+			DeathScreen.Open(oldColor, Farmer.Color);
+			DeathScreen.CallBack = () =>
+			{
+				Generations.Add(new(CurrentGeneration));
+				UpdateGenerationLabel();
 
-			ShopMenu.Refill();
-			for (int i = CardHand.CardCount; i < 3; i++) { CardHand.AddCard(Cards.GetRandomCard()); }
+				ShopMenu.Refill();
+				for (int i = CardHand.CardCount; i < 3; i++) { CardHand.AddCard(Cards.GetRandomCard()); }
+			};
+
 			return;
 		}
 
 		Elapsed += delta;
 		if (Elapsed >= 1)
 		{
+			int farmerAge = (float)((float)CurrentGeneration.ElapsedSeconds / (float)CurrentGeneration.LengthInSeconds) switch
+			{
+				<= 0.33f => 0,
+				<= 0.66f => 1,
+				<= 1.0f => 2,
+				_ => 0,
+			};
+			Farmer.Age(farmerAge);
+
 			CurrentGeneration.SimulateSecond();
 			Elapsed = 0.0;
 
@@ -91,10 +115,10 @@ public partial class World : Node2D
 
 	private void HandleMouseMovement()
 	{
-		Vector2 position = GetViewport().GetMousePosition();		// mouse position in viewport coordinates
+		Vector2 position = GetViewport().GetMousePosition();        // mouse position in viewport coordinates
 
-		Vector2 tilePosition = position - TileMapLayer.Position;	// mouse position relative to the TileMapLayer
-		tilePosition /= TileMapLayer.TileSet.TileSize;				// convert to tile coordinates
+		Vector2 tilePosition = position - TileMapLayer.Position;    // mouse position relative to the TileMapLayer
+		tilePosition /= TileMapLayer.TileSet.TileSize;              // convert to tile coordinates
 
 		bool isInTileSpace = tilePosition.X >= 0 && tilePosition.X < Size.X &&
 							 tilePosition.Y >= 0 && tilePosition.Y < Size.Y;
@@ -179,7 +203,7 @@ public partial class World : Node2D
 
 			switch (cardInfo.Type)
 			{
-				case CardType.Plant: HarvestSound.Play();break;
+				case CardType.Plant: HarvestSound.Play(); break;
 				case CardType.Tree: HarvestSound.Play(); break;
 				case CardType.Cut: SnipSound.Play(); break;
 				case CardType.Pickaxe: PickaxeSound.Play(); break;

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbk6vva37l53x"]
+
+[ext_resource type="Texture2D" uid="uid://c785741q6thov" path="res://Resources/farmer_stages.png" id="1_fenmk"]
+[ext_resource type="Script" uid="uid://cu6qfrsisfbjr" path="res://Scripts/Farmer.cs" id="1_mh42h"]
+[ext_resource type="Texture2D" uid="uid://bgh01wgnueniu" path="res://Resources/farmer_face.png" id="3_nfat1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umi86"]
+atlas = ExtResource("1_fenmk")
+region = Rect2(0, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh42h"]
+atlas = ExtResource("1_fenmk")
+region = Rect2(17, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfat1"]
+atlas = ExtResource("1_fenmk")
+region = Rect2(34, 0, 17, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63j4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umi86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh42h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfat1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Farmer" type="Node2D"]
+script = ExtResource("1_mh42h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 9.0
+offset_bottom = 4.5
+color = Color(0, 0, 0, 0.4)
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_63j4h")
+
+[node name="Face" type="Sprite2D" parent="."]
+position = Vector2(-1.5, -11)
+texture = ExtResource("3_nfat1")

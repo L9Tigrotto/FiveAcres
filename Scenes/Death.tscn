@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cio51wm0u7c43"]
+
+[ext_resource type="Script" uid="uid://bdt6bdarnd07t" path="res://Scripts/Death.cs" id="1_6poc4"]
+[ext_resource type="Texture2D" uid="uid://d0ddixoodvgik" path="res://Resources/tomb.png" id="2_prkst"]
+[ext_resource type="Texture2D" uid="uid://dthybj3awspfm" path="res://Resources/farmer_face_tomb.png" id="3_6nwb2"]
+[ext_resource type="PackedScene" uid="uid://bbk6vva37l53x" path="res://Scenes/Farmer.tscn" id="4_pl6eg"]
+[ext_resource type="AudioStream" uid="uid://dwey56qdw4hsv" path="res://Resources/Sounds/Bell.wav" id="5_6nwb2"]
+[ext_resource type="Script" uid="uid://dd7gwhuhdq831" path="res://Scripts/RandomPitchAudioStream.cs" id="6_pl6eg"]
+
+[node name="Death" type="Node2D"]
+script = ExtResource("1_6poc4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="NextGenerationButton" type="Button" parent="."]
+offset_left = 208.0
+offset_top = 320.0
+offset_right = 252.0
+offset_bottom = 343.0
+text = "Next"
+
+[node name="Grave" type="Sprite2D" parent="."]
+position = Vector2(320, 160)
+scale = Vector2(7, 7)
+texture = ExtResource("2_prkst")
+
+[node name="GraveFace" type="Sprite2D" parent="."]
+position = Vector2(320, 170)
+scale = Vector2(7, 7)
+texture = ExtResource("3_6nwb2")
+
+[node name="Farmer" parent="." instance=ExtResource("4_pl6eg")]
+position = Vector2(160, 216)
+scale = Vector2(7, 7)
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6nwb2")
+volume_db = -15.446
+script = ExtResource("6_pl6eg")
