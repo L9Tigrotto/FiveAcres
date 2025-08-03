@@ -158,7 +158,7 @@ file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest
 
 	public void SimulateSecond(int second, Vector2I thisPostion, TileGrid grid)
 	{
-		if (ThisType.CanBeHarvested() || second == 0 || second % 2 != 0) { return; }
+		if (ThisType.CanBeHarvested() || second == 0) { return; }
 
 		float roll = grid.Random.NextSingle();
 		float cellProbability = Data[thisPostion];
@@ -167,7 +167,7 @@ file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest
 			grid.SetCell(thisPostion, NextType);
 			Data[thisPostion] = 0.0f; // reset the probability for this tile
 		}
-		else { Data[thisPostion] = cellProbability += ProbabilityIncreaseOnFailure; }
+		else { Data[thisPostion] += ProbabilityIncreaseOnFailure; }
 	}
 
 	public virtual bool TryClick(Vector2I thisPostion, TileGrid grid, Storage storage)
@@ -185,7 +185,7 @@ file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest
 
 file class BaseHarvestablePlantsTile : BaseGrowableTile
 {
-	public BaseHarvestablePlantsTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.10f)
+	public BaseHarvestablePlantsTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.03f)
 		: base(thisType, nextType, minHarvest: 3, maxHarvest: 6, probabilityIncreaseOnFailure)
 	{
 		if (!thisType.CanBeHarvested()) 
@@ -198,7 +198,7 @@ file class BaseHarvestablePlantsTile : BaseGrowableTile
 
 file class BaseHarvestableTreeTile : BaseGrowableTile
 {
-	public BaseHarvestableTreeTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.05f)
+	public BaseHarvestableTreeTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.20f)
 		: base(thisType, nextType, minHarvest: 4, maxHarvest: 8, probabilityIncreaseOnFailure)
 	{
 		if (!thisType.CanBeHarvested())
@@ -211,10 +211,10 @@ file class BaseHarvestableTreeTile : BaseGrowableTile
 
 // wheat stages
 file class EarlyStageWheatTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageWheat, nextType: TileType.MidStageWheat);
+	thisType: TileType.EarlyStageWheat, nextType: TileType.MidStageWheat, probabilityIncreaseOnFailure: 0.35f);
 
 file class MidStageWheatTile() : BaseGrowableTile(
-	thisType: TileType.MidStageWheat, nextType: TileType.LateStageWheat);
+	thisType: TileType.MidStageWheat, nextType: TileType.LateStageWheat, probabilityIncreaseOnFailure: 0.35f);
 
 file class LateStageWheatTile() : BaseHarvestablePlantsTile(
 	thisType: TileType.LateStageWheat, nextType: TileType.EarlyStageWheat);
@@ -222,10 +222,10 @@ file class LateStageWheatTile() : BaseHarvestablePlantsTile(
 
 // rice stages
 file class EarlyStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageRice, nextType: TileType.MidStageRice);
+	thisType: TileType.EarlyStageRice, nextType: TileType.MidStageRice, probabilityIncreaseOnFailure: 0.35f);
 
 file class MidStageRiceTile() : BaseGrowableTile(
-	thisType: TileType.MidStageRice, nextType: TileType.LateStageRice);
+	thisType: TileType.MidStageRice, nextType: TileType.LateStageRice, probabilityIncreaseOnFailure: 0.35f);
 
 file class LateStageRiceTile() : BaseHarvestablePlantsTile(
 	thisType: TileType.LateStageRice, nextType: TileType.EarlyStageRice);
@@ -233,10 +233,10 @@ file class LateStageRiceTile() : BaseHarvestablePlantsTile(
 
 // carrot stages
 file class EarlyStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageCarrot, nextType: TileType.MidStageCarrot);
+	thisType: TileType.EarlyStageCarrot, nextType: TileType.MidStageCarrot, probabilityIncreaseOnFailure: 0.35f);
 
 file class MidStageCarrotTile() : BaseGrowableTile(
-	thisType: TileType.MidStageCarrot, nextType: TileType.LateStageCarrot);
+	thisType: TileType.MidStageCarrot, nextType: TileType.LateStageCarrot, probabilityIncreaseOnFailure: 0.35f);
 
 file class LateStageCarrotTile() : BaseHarvestablePlantsTile(
 	thisType: TileType.LateStageCarrot, nextType: TileType.EarlyStageCarrot);
@@ -244,10 +244,10 @@ file class LateStageCarrotTile() : BaseHarvestablePlantsTile(
 
 // potato stages
 file class EarlyStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStagePotato, nextType: TileType.MidStagePotato);
+	thisType: TileType.EarlyStagePotato, nextType: TileType.MidStagePotato, probabilityIncreaseOnFailure: 0.35f);
 
 file class MidStagePotatoTile() : BaseGrowableTile(
-	thisType: TileType.MidStagePotato, nextType: TileType.LateStagePotato);
+	thisType: TileType.MidStagePotato, nextType: TileType.LateStagePotato, probabilityIncreaseOnFailure: 0.35f);
 
 file class LateStagePotatoTile() : BaseHarvestablePlantsTile(
 	thisType: TileType.LateStagePotato, nextType: TileType.EarlyStagePotato);
@@ -255,10 +255,10 @@ file class LateStagePotatoTile() : BaseHarvestablePlantsTile(
 
 // apple stages
 file class EarlyStageAppleTreeTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageAppleTree, nextType: TileType.MidStageAppleTree);
+	thisType: TileType.EarlyStageAppleTree, nextType: TileType.MidStageAppleTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class MidStageAppleTreeTile() : BaseGrowableTile(
-	thisType: TileType.MidStageAppleTree, nextType: TileType.LateStageAppleTree);
+	thisType: TileType.MidStageAppleTree, nextType: TileType.LateStageAppleTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class LateStageAppleTreeTile() : BaseHarvestableTreeTile(
 	thisType: TileType.LateStageAppleTree, nextType: TileType.MidStageAppleTree);
@@ -266,10 +266,10 @@ file class LateStageAppleTreeTile() : BaseHarvestableTreeTile(
 
 // cherry stages
 file class EarlyStageCherryTreeTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStageCherryTree, nextType: TileType.MidStageCherryTree);
+	thisType: TileType.EarlyStageCherryTree, nextType: TileType.MidStageCherryTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class MidStageCherryTreeTile() : BaseGrowableTile(
-	thisType: TileType.MidStageCherryTree, nextType: TileType.LateStageCherryTree);
+	thisType: TileType.MidStageCherryTree, nextType: TileType.LateStageCherryTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class LateStageCherryTreeTile() : BaseHarvestableTreeTile(
 	thisType: TileType.LateStageCherryTree, nextType: TileType.MidStageCherryTree);
@@ -277,10 +277,10 @@ file class LateStageCherryTreeTile() : BaseHarvestableTreeTile(
 
 // peach stages
 file class EarlyStagePeachTreeTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStagePeachTree, nextType: TileType.MidStagePeachTree);
+	thisType: TileType.EarlyStagePeachTree, nextType: TileType.MidStagePeachTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class MidStagePeachTreeTile() : BaseGrowableTile(
-	thisType: TileType.MidStagePeachTree, nextType: TileType.LateStagePeachTree);
+	thisType: TileType.MidStagePeachTree, nextType: TileType.LateStagePeachTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class LateStagePeachTreeTile() : BaseHarvestableTreeTile(
 	thisType: TileType.LateStagePeachTree, nextType: TileType.MidStagePeachTree);
@@ -288,10 +288,10 @@ file class LateStagePeachTreeTile() : BaseHarvestableTreeTile(
 
 // pear stages
 file class EarlyStagePearTreeTile() : BaseGrowableTile(
-	thisType: TileType.EarlyStagePearTree, nextType: TileType.MidStagePearTree);
+	thisType: TileType.EarlyStagePearTree, nextType: TileType.MidStagePearTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class MidStagePearTreeTile() : BaseGrowableTile(
-	thisType: TileType.MidStagePearTree, nextType: TileType.LateStagePearTree);
+	thisType: TileType.MidStagePearTree, nextType: TileType.LateStagePearTree, probabilityIncreaseOnFailure: 0.15f);
 
 file class LateStagePearTreeTile() : BaseHarvestableTreeTile(
 	thisType: TileType.LateStagePearTree, nextType: TileType.MidStagePearTree);

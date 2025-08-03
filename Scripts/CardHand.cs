@@ -25,7 +25,7 @@ public partial class CardHand : Node2D
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustReleased("ui_accept")) AddCard(Cards.GetRandomCard());
+		//if (Input.IsActionJustReleased("ui_accept")) AddCard(Cards.GetRandomCard());
 	}
 
 	public void AddCard(ICard card)

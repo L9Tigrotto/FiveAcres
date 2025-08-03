@@ -43,25 +43,25 @@ public class Generation
 			if (position.X - 1 >= 0 && TileGrid.Grid[position.X - 1, position.Y].Type.IsReplaceableByWeed())
 			{
 				float value = random.NextSingle();
-				if (value < 0.05f) { TileGrid.SetCell(new(position.X - 1, position.Y), TileType.Weed); }
+				if (value < 0.15f) { TileGrid.SetCell(new(position.X - 1, position.Y), TileType.Weed); }
 			}
 		
 			if (position.X + 1 < gridSize.X && TileGrid.Grid[position.X + 1, position.Y].Type.IsReplaceableByWeed())
 			{
 				float value = random.NextSingle();
-				if (value < 0.05f) { TileGrid.SetCell(new(position.X + 1, position.Y), TileType.Weed); }
+				if (value < 0.15f) { TileGrid.SetCell(new(position.X + 1, position.Y), TileType.Weed); }
 			}
 		
 			if (position.Y - 1 >= 0 && TileGrid.Grid[position.X, position.Y - 1].Type.IsReplaceableByWeed())
 			{
 				float value = random.NextSingle();
-				if (value < 0.05f) { TileGrid.SetCell(new(position.X, position.Y - 1), TileType.Weed); }
+				if (value < 0.15f) { TileGrid.SetCell(new(position.X, position.Y - 1), TileType.Weed); }
 			}
 		
 			if (position.Y + 1 < gridSize.Y && TileGrid.Grid[position.X, position.Y + 1].Type.IsReplaceableByWeed())
 			{
 				float value = random.NextSingle();
-				if (value < 0.05f) { TileGrid.SetCell(new(position.X, position.Y + 1), TileType.Weed); }
+				if (value < 0.15f) { TileGrid.SetCell(new(position.X, position.Y + 1), TileType.Weed); }
 			}
 		}
 

@@ -78,7 +78,7 @@ public partial class World : Node2D
 				UpdateGenerationLabel();
 
 				ShopMenu.Refill();
-				for (int i = CardHand.CardCount; i < 3; i++) { CardHand.AddCard(Cards.GetRandomCard()); }
+				for (int i = CardHand.CardCount; i < 4; i++) { CardHand.AddCard(Cards.GetRandomCard()); }
 			};
 			
 
