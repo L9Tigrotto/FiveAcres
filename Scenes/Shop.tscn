@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dejea47savkr3"]
+[gd_scene load_steps=17 format=3 uid="uid://dejea47savkr3"]
 
 [ext_resource type="Script" uid="uid://bebymdor2nq4x" path="res://Scripts/Shop.cs" id="1_kjfcx"]
 [ext_resource type="FontFile" uid="uid://droin6pa66u8i" path="res://Resources/VCR_OSD_MONO_1.001.ttf" id="2_iidq5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqanhdpk2gn80" path="res://Resources/soldSign.png" id="7_2aaoe"]
 [ext_resource type="Texture2D" uid="uid://cwlmc3y56dkcl" path="res://Resources/card_arts/wheat.png" id="7_ckylj"]
 [ext_resource type="AudioStream" uid="uid://bjrcaixxdjtht" path="res://Resources/Sounds/ChaChing.wav" id="9_ct2yw"]
+[ext_resource type="Script" uid="uid://dd7gwhuhdq831" path="res://Scripts/RandomPitchAudioStream.cs" id="10_1mgah"]
 [ext_resource type="AudioStream" uid="uid://ckvkrhq3enj2l" path="res://Resources/Sounds/CantBuy.wav" id="10_ccd4q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckylj"]
@@ -263,6 +264,8 @@ vertical_alignment = 1
 
 [node name="BuySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ct2yw")
+script = ExtResource("10_1mgah")
 
 [node name="CantBuySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ccd4q")
+script = ExtResource("10_1mgah")

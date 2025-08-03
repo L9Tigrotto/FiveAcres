@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqj7yu1mjappr"]
+[gd_scene load_steps=20 format=3 uid="uid://bqj7yu1mjappr"]
 
 [ext_resource type="Script" uid="uid://cp4wpbl4k5iw1" path="res://Scripts/World.cs" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://cc3pmpn7a3ybn" path="res://Resources/terrain.png" id="2_45d1s"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b5tdxbt7yokcx" path="res://Resources/card_arts/outline.png" id="9_uo7di"]
 [ext_resource type="AudioStream" uid="uid://cfgl0uvbs4m6x" path="res://Resources/Sounds/Ambience.wav" id="10_op4cu"]
 [ext_resource type="AudioStream" uid="uid://ddty2en8i7031" path="res://Resources/Sounds/Harvest.wav" id="11_7yo87"]
+[ext_resource type="Script" uid="uid://dd7gwhuhdq831" path="res://Scripts/RandomPitchAudioStream.cs" id="11_8l3nt"]
 [ext_resource type="AudioStream" uid="uid://bvxatoyr0mrq5" path="res://Resources/Sounds/Snip.wav" id="12_ti1bm"]
 [ext_resource type="AudioStream" uid="uid://c4efvfcxqv6ea" path="res://Resources/Sounds/RockBreak.wav" id="13_op4cu"]
 
@@ -462,15 +463,19 @@ axis_stretch_vertical = 1
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_op4cu")
 autoplay = true
+script = ExtResource("11_8l3nt")
 
 [node name="HarvestSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_7yo87")
 volume_db = -10.0
+script = ExtResource("11_8l3nt")
 
 [node name="SnipSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_ti1bm")
 volume_db = -5.0
+script = ExtResource("11_8l3nt")
 
 [node name="PickaxeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_op4cu")
-volume_db = -10.0
+volume_db = -5.0
+script = ExtResource("11_8l3nt")

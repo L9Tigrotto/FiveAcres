@@ -30,7 +30,7 @@ public partial class Storage : Node2D
 		PearLabel = GetNode<Label>("PearLabel");
 		
 		
-		Count = new()
+		Count = new Dictionary<ItemType, int>
 		{
 			{ ItemType.Wheat, 0 },
 			{ ItemType.Rice, 0 },

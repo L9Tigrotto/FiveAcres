@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dobhntanvkroo"]
+[gd_scene load_steps=6 format=3 uid="uid://dobhntanvkroo"]
 
 [ext_resource type="Script" uid="uid://cg3d1yuk7gkye" path="res://Scripts/CardHand.cs" id="1_0xaq6"]
 [ext_resource type="PackedScene" uid="uid://k1x11amoy215" path="res://Scenes/Card.tscn" id="2_q1mbt"]
 [ext_resource type="AudioStream" uid="uid://cbnjsmufpoyf3" path="res://Resources/Sounds/CardPick.wav" id="3_fkehq"]
+[ext_resource type="Script" uid="uid://dd7gwhuhdq831" path="res://Scripts/RandomPitchAudioStream.cs" id="4_yhysn"]
 
 [sub_resource type="Curve" id="Curve_q1mbt"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 3.57564, 3.57564, 0, 0, Vector2(0.503523, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.83452, 0.0, 0, 0]
 point_count = 4
 
 [node name="Card_Hand" type="Node2D"]
-position = Vector2(193, 138)
 script = ExtResource("1_0xaq6")
 CardScene = ExtResource("2_q1mbt")
 CardSize = 100
@@ -19,3 +19,4 @@ CardCurvature = SubResource("Curve_q1mbt")
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fkehq")
 volume_db = 12.0
+script = ExtResource("4_yhysn")

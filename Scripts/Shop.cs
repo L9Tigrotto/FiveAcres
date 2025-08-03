@@ -41,8 +41,8 @@ public partial class Shop : Control
 	private Storage Storage { get; set; }
 	private CardHand CardHand { get; set; }
 
-	private AudioStreamPlayer BuySound { get; set; }
-	private AudioStreamPlayer CantBuySound { get; set; }
+	private RandomPitchAudioStream BuySound { get; set; }
+	private RandomPitchAudioStream CantBuySound { get; set; }
 
 	public override void _Ready()
 	{
@@ -110,8 +110,8 @@ public partial class Shop : Control
 
 		Refill();
 
-		BuySound = GetNode<AudioStreamPlayer>("BuySound");
-		CantBuySound = GetNode<AudioStreamPlayer>("CantBuySound");
+		BuySound = GetNode<RandomPitchAudioStream>("BuySound");
+		CantBuySound = GetNode<RandomPitchAudioStream>("CantBuySound");
 	}
 
 	public void Open()
@@ -236,10 +236,10 @@ public partial class Shop : Control
 		};
 
 		//Can afford?
-		for (int i = 0; i < Card1.CardInfo.StoreCost.Length; i++)
+		for (int i = 0; i < cardToBuy.CardInfo.StoreCost.Length; i++)
 		{
-			ItemType itemType = Card1.CardInfo.StoreCost[i].Type;
-			int costAmount = Card1.CardInfo.StoreCost[i].Amount;
+			ItemType itemType = cardToBuy.CardInfo.StoreCost[i].Type;
+			int costAmount = cardToBuy.CardInfo.StoreCost[i].Amount;
 
 			if (Storage.Count[itemType] < costAmount)
 			{
@@ -252,12 +252,12 @@ public partial class Shop : Control
 
 		BuySound.Play();
 
-		for (int i = 0; i < Card1.CardInfo.StoreCost.Length; i++) //Sta cosa e' un po' demente ma vbb
+		for (int i = 0; i < cardToBuy.CardInfo.StoreCost.Length; i++) //Sta cosa e' un po' demente ma vbb
 		{
-			ItemType itemType = Card1.CardInfo.StoreCost[i].Type;
-			int costAmount = Card1.CardInfo.StoreCost[i].Amount;
+			ItemType itemType = cardToBuy.CardInfo.StoreCost[i].Type;
+			int costAmount = cardToBuy.CardInfo.StoreCost[i].Amount;
 
-			Storage.AddItem(itemType, costAmount);
+			Storage.AddItem(itemType, -costAmount);
 		}
 
 		SetCardSlotVisibility(cardIndex, false);

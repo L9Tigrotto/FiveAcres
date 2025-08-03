@@ -17,11 +17,18 @@ public partial class CardHand : Node2D
 
 	int cardAmount = 0;
 
-	private AudioStreamPlayer PickSound { get; set; }
+	private RandomPitchAudioStream PickSound { get; set; }
 
 	public override void _Ready()
 	{
-		PickSound = GetNode<AudioStreamPlayer>("PickSound");
+		PickSound = GetNode<RandomPitchAudioStream>("PickSound");
+		
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
+		AddCard(Cards.GedSpecificOrRandom("Pickaxe"));
 	}
 
 	public override void _Process(double delta)

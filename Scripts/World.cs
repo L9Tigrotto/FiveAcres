@@ -17,9 +17,9 @@ public partial class World : Node2D
 	private CardHand CardHand { get; set; }
 	private NinePatchRect Cursor { get; set; }
 
-	public AudioStreamPlayer HarvestSound { get; set; }
-	public AudioStreamPlayer SnipSound { get; set; }
-	public AudioStreamPlayer PickaxeSound { get; set; }
+	public RandomPitchAudioStream HarvestSound { get; set; }
+	public RandomPitchAudioStream SnipSound { get; set; }
+	public RandomPitchAudioStream PickaxeSound { get; set; }
 
 	public override void _Ready()
 	{
@@ -48,9 +48,9 @@ public partial class World : Node2D
 
 		Cursor = GetNode<NinePatchRect>("Cursor");
 
-		HarvestSound = GetNode<AudioStreamPlayer>("HarvestSound");
-		SnipSound = GetNode<AudioStreamPlayer>("SnipSound");
-		PickaxeSound = GetNode<AudioStreamPlayer>("PickaxeSound");
+		HarvestSound = GetNode<RandomPitchAudioStream>("HarvestSound");
+		SnipSound = GetNode<RandomPitchAudioStream>("SnipSound");
+		PickaxeSound = GetNode<RandomPitchAudioStream>("PickaxeSound");
 	}
 
 	private double Elapsed { get; set; } = 0;

@@ -41,7 +41,7 @@ position = Vector2(0, -14)
 texture = ExtResource("2_3m7nw")
 
 [node name="Card_Circle" type="Sprite2D" parent="Card_Bg"]
-position = Vector2(-23.3333, -29.6667)
+position = Vector2(-0.173, 2)
 scale = Vector2(0.707603, 0.707603)
 texture = ExtResource("4_kphy1")
 
@@ -71,10 +71,10 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="Card_Cost" type="Label" parent="Card_Bg"]
-offset_left = -28.3333
-offset_top = -34.6667
-offset_right = -6.33333
-offset_bottom = -11.6667
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 20.0
 scale = Vector2(0.43, 0.43)
 text = "10"
 label_settings = SubResource("LabelSettings_wejov")
