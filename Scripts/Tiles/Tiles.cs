@@ -185,8 +185,8 @@ file class BaseGrowableTile(TileType thisType, TileType nextType, int minHarvest
 
 file class BaseHarvestablePlantsTile : BaseGrowableTile
 {
-	public BaseHarvestablePlantsTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.03f)
-		: base(thisType, nextType, minHarvest: 1, maxHarvest: 5, probabilityIncreaseOnFailure)
+	public BaseHarvestablePlantsTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.10f)
+		: base(thisType, nextType, minHarvest: 3, maxHarvest: 6, probabilityIncreaseOnFailure)
 	{
 		if (!thisType.CanBeHarvested()) 
 		{ 
@@ -198,8 +198,8 @@ file class BaseHarvestablePlantsTile : BaseGrowableTile
 
 file class BaseHarvestableTreeTile : BaseGrowableTile
 {
-	public BaseHarvestableTreeTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.03f)
-		: base(thisType, nextType, minHarvest: 2, maxHarvest: 10, probabilityIncreaseOnFailure)
+	public BaseHarvestableTreeTile(TileType thisType, TileType nextType, float probabilityIncreaseOnFailure = 0.05f)
+		: base(thisType, nextType, minHarvest: 4, maxHarvest: 8, probabilityIncreaseOnFailure)
 	{
 		if (!thisType.CanBeHarvested())
 		{
