@@ -1,4 +1,7 @@
 # Five Acres
+<p align="center">
+  <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/e742cc68-2150-4897-8b56-887d3b96e3dd" />
+</p>
 
 Five Acres is a mini game developed for the GMTK Game Jam 2025, which featured the theme "loop".
 
@@ -29,3 +32,12 @@ Dont get surrounded by the weeds which will take up precious space that could  b
 ## Credits
 
 Additional assets where used: see [CREDITS](CREDITS)
+
+---
+
+## Images
+
+<p align="center">
+  <img width="794" height="595" alt="image" src="https://github.com/user-attachments/assets/ef73b236-fac1-4b80-b256-e294276324f5" />
+  <img width="794" height="595" alt="image" src="https://github.com/user-attachments/assets/b8b74a61-c882-400a-b050-fd0ff1c62b0c" />
+</p>
